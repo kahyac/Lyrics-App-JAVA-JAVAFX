@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class LyricsApp extends Application {
 
-    //48574567577
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/lyricsapp.fxml"));
