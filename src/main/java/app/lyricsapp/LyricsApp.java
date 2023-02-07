@@ -23,7 +23,7 @@ public class LyricsApp extends Application {
         primaryStage.show();
 
         try {
-            File inputFile = new File("/app/lyricsapp/view/query1.xml");
+            File inputFile = new File("/query1.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
