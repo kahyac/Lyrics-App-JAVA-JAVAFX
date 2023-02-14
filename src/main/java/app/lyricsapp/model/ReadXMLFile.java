@@ -1,22 +1,78 @@
 package app.lyricsapp.model;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
 
 public class ReadXMLFile {
-    public static void main(String argv[]) {
+    public static List<Song> readFile(File file) {
+
+        List<Song> songs = new ArrayList<>();
+
         try {
-            File inputFile = new File("src/main/query2.xml");
+
+
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(inputFile);
+            Document doc = dBuilder.parse(file);
+
+            // optional, but recommended
+            // read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
             doc.getDocumentElement().normalize();
+
             System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+            NodeList nList = doc.getElementsByTagName("SearchLyricResult");
+            System.out.println("----------------------------");
+
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+                Node nNode = nList.item(temp);
+                System.out.println("\nCurrent Element :" + nNode.getNodeName());
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) nNode;
+
+                    String trackId = eElement.getElementsByTagName("TrackId").item(0).getTextContent();
+                    String lyricsCheckSum = eElement.getElementsByTagName("LyricChecksum").item(0).getTextContent();
+                    String lyricsId = eElement.getElementsByTagName("LyricId").item(0).getTextContent();
+                    String SongUrl = eElement.getElementsByTagName("SongUrl").item(0).getTextContent();
+                    String ArtistUrl = eElement.getElementsByTagName("ArtistUrl").item(0).getTextContent();
+                    String Artist = eElement.getElementsByTagName("Artist").item(0).getTextContent();
+                    String Song = eElement.getElementsByTagName("Song").item(0).getTextContent();
+                    String SongRank = eElement.getElementsByTagName("SongRank").item(0).getTextContent();
+                    Song song = new Song(lyricsCheckSum,lyricsId,Artist,Song);
+                    songs.add(song);
+
+/*
+                    System.out.println("TrackId : " + eElement.getElementsByTagName("TrackId").item(0).getTextContent());
+                    System.out.println("LyricChecksum : " + eElement.getElementsByTagName("LyricChecksum").item(0).getTextContent());
+                    System.out.println("LyricId : " + eElement.getElementsByTagName("LyricId").item(0).getTextContent());
+                    System.out.println("SongUrl : " + eElement.getElementsByTagName("SongUrl").item(0).getTextContent());
+                    System.out.println("ArtistUrl : " + eElement.getElementsByTagName("ArtistUrl").item(0).getTextContent());
+                    System.out.println("Artist : " + eElement.getElementsByTagName("Artist").item(0).getTextContent());
+                    System.out.println("Song : " + eElement.getElementsByTagName("Song").item(0).getTextContent());
+                    System.out.println("SongRank : " + eElement.getElementsByTagName("SongRank").item(0).getTextContent());
+
+ */
+                }
+            }
+
+
         } catch (Exception e) {
-            e.printStackTrace();
+            //DO_NOTHING
         }
+
+        return songs;
+    }
+
+    public static void main(String [] args) {
+        File file = new File("query1.xml");
+        List<Song> songs = readFile(file);
+        for (Song song : songs)
+            System.out.println(song.toString());
     }
 }
-

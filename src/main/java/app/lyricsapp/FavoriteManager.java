@@ -1,13 +1,34 @@
 package app.lyricsapp;
 
+import app.lyricsapp.model.ReadXMLFile;
+import app.lyricsapp.model.Song;
+
 import java.io.File;
-import java.util.ArrayList;
+import java.util.*;
 
 public class FavoriteManager {
-    File favoriteSong;
+    private List<Song> favoriteSong;
+    File favoriteFile = new File("favoriteFile.xml");
+    public FavoriteManager() {
+        favoriteSong = ReadXMLFile.readFile(favoriteFile);
+    }
 
+    public void writeFavoriteFile() {
+        //vider le fichier
+        for (Song song : favoriteSong) {
+            // ecrire song dans le fichier
+        }
+    }
+    public void addFavorite(Song song) {
+        favoriteSong.add(song);
+        writeFavoriteFile();
+    }
+    public void removeFavorite(Song song) {
+        favoriteSong.remove(song);
+        writeFavoriteFile();
+    }
 
-    public FavoriteManager(File favoriteSong) {
-        this.favoriteSong = new File("favoriteSong.xml");
+    public File getFavoriteFile() {
+        return favoriteFile;
     }
 }
