@@ -87,7 +87,7 @@ public class MenuNavigation {
             String encodedTitle = java.net.URLEncoder.encode(title, "UTF-8");
 
             // build URL for lyrics API
-            String urlStr = "http://api.chartlyrics.com/apiv1.asmx/SearchLyric?" + encodedArtist + "/" + encodedTitle;
+            String urlStr = "http://api.chartlyrics.com/apiv1.asmx/SearchLyric?artist=" + encodedArtist + "&song=" + encodedTitle;
 
             // create URL object and open connection
             URL url = new URL(urlStr);
