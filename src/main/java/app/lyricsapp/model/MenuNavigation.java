@@ -59,7 +59,7 @@ public class MenuNavigation {
 
     public static void searchChoice(int searchChoice) {
         if (searchChoice == 1) {
-            System.out.print("Veuillez inscrire le titre de la chanson : ");
+            System.out.print("\nVeuillez inscrire le titre de la chanson : ");
             Scanner scanner = new Scanner(System.in);
             String title = scanner.nextLine();
             System.out.print("Veuillez inscrire le nom de l'artiste : ");
@@ -67,9 +67,10 @@ public class MenuNavigation {
             searchSong(title, artist);
         }
         else if (searchChoice == 2) {
-            System.out.print("Veuillez inscrire les paroles de la chanson : ");
+            System.out.print("\nVeuillez inscrire les paroles de la chanson : ");
             Scanner scanner = new Scanner(System.in);
             String lyrics = scanner.nextLine();
+            searchSong(lyrics);
         }
         else if (searchChoice == 3) {
             //
@@ -111,7 +112,41 @@ public class MenuNavigation {
             // print response
             System.out.println(content.toString());
         } catch (IOException e) {
-            System.out.println("Erreur lors de la récupération des paroles de la chanson : " + e.getMessage());
+            System.out.println("Erreur lors de la récupération de la chanson : " + e.getMessage());
+        }
+    }
+
+    public static void searchSong(String lyrics) {
+        try {
+            // encode song title and artist name for use in URL
+            String encodedLyrics = java.net.URLEncoder.encode(lyrics, "UTF-8");
+
+            // build URL for lyrics API
+            String urlStr = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricText?lyricText=" + encodedLyrics;
+
+            // create URL object and open connection
+            URL url = new URL(urlStr);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+            // set request method and headers
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json");
+
+            // read response
+            int status = con.getResponseCode();
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer content = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+            in.close();
+            con.disconnect();
+
+            // print response
+            System.out.println(content.toString());
+        } catch (IOException e) {
+            System.out.println("Erreur lors de la récupération de la chanson : " + e.getMessage());
         }
     }
 
