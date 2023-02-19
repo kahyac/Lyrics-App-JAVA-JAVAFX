@@ -1,13 +1,25 @@
-package app.lyricsapp.model;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
-import java.util.Scanner;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Scanner;
 
 public class MenuNavigation {
+
+//    static String[] artists;
+//    static String[] songs;
+//    static String[] lyricIds;
+//    static String[] lyricChecksums;
+//    static String[] lyrics;
+
 
     public static void display() {
         System.out.println("1- Rechercher une chanson");
@@ -58,96 +70,205 @@ public class MenuNavigation {
     }
 
     public static void searchChoice(int searchChoice) {
+
         if (searchChoice == 1) {
+
             System.out.print("\nVeuillez inscrire le titre de la chanson : ");
             Scanner scanner = new Scanner(System.in);
             String title = scanner.nextLine();
             System.out.print("Veuillez inscrire le nom de l'artiste : ");
             String artist = scanner.nextLine();
-            searchSong(title, artist);
+            searchSongByArtistAndTitle(artist, title);
         }
+
         else if (searchChoice == 2) {
+
             System.out.print("\nVeuillez inscrire les paroles de la chanson : ");
             Scanner scanner = new Scanner(System.in);
             String lyrics = scanner.nextLine();
-            searchSong(lyrics);
+            searchSongByLyrics(lyrics);
         }
         else if (searchChoice == 3) {
-            //
+
         }
+
         else {
             System.out.println("Entrée invalide");
         }
     }
 
-    public static void searchSong(String title, String artist) {
+    public static void searchSongByArtistAndTitle(String artist, String title) {
+
+        artist =  artist.replaceAll(" ", "%20");
+        title =  title.replaceAll(" ", "%20");
 
         try {
-            // encode song title and artist name for use in URL
-            String encodedArtist = java.net.URLEncoder.encode(artist, "UTF-8");
-            String encodedTitle = java.net.URLEncoder.encode(title, "UTF-8");
 
-            // build URL for lyrics API
-            String urlStr = "http://api.chartlyrics.com/apiv1.asmx/SearchLyric?artist=" + encodedArtist + "&song=" + encodedTitle;
+            URL url = new URL("http://api.chartlyrics.com/apiv1.asmx/SearchLyric?artist=" + artist + "&song=" + title);
 
-            // create URL object and open connection
-            URL url = new URL(urlStr);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
-
-            // set request method and headers
             con.setRequestMethod("GET");
-            con.setRequestProperty("Content-Type", "application/json");
 
-            // read response
-            int status = con.getResponseCode();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String inputLine;
-            StringBuffer content = new StringBuffer();
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine);
-            }
-            in.close();
-            con.disconnect();
 
-            // print response
-            System.out.println(content.toString());
-        } catch (IOException e) {
-            System.out.println("Erreur lors de la récupération de la chanson : " + e.getMessage());
+            StringBuilder response = new StringBuilder();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+
+            in.close();
+            System.out.println(response);
+            parseXMLIDAndChecksum(String.valueOf(response));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void searchSongByLyrics(String lyrics) {
+
+        lyrics =  lyrics.replaceAll(" ", "%20");
+
+        try {
+
+            URL url = new URL("http://api.chartlyrics.com/apiv1.asmx/SearchLyricText?lyricText=" + lyrics);
+
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+
+            StringBuilder response = new StringBuilder();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+
+            in.close();
+            System.out.println(response);
+            parseXMLIDAndChecksum(String.valueOf(response));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    public static void searchSong(String lyrics) {
+    public static void searchLyricsByIdAndChecksum(String id, String checksum) {
+
         try {
-            // encode song title and artist name for use in URL
-            String encodedLyrics = java.net.URLEncoder.encode(lyrics, "UTF-8");
 
-            // build URL for lyrics API
-            String urlStr = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricText?lyricText=" + encodedLyrics;
+            URL url = new URL("http://api.chartlyrics.com/apiv1.asmx/GetLyric?lyricId=" + id + "&lyricCheckSum=" + checksum);
 
-            // create URL object and open connection
-            URL url = new URL(urlStr);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
-
-            // set request method and headers
             con.setRequestMethod("GET");
-            con.setRequestProperty("Content-Type", "application/json");
 
-            // read response
-            int status = con.getResponseCode();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String inputLine;
-            StringBuffer content = new StringBuffer();
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine);
-            }
-            in.close();
-            con.disconnect();
 
-            // print response
-            System.out.println(content.toString());
-        } catch (IOException e) {
-            System.out.println("Erreur lors de la récupération de la chanson : " + e.getMessage());
+            StringBuilder response = new StringBuilder();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+
+            in.close();
+            System.out.println(response);
+            parseXML(String.valueOf(response));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
+    public static void parseXML(String XML) {
+
+        try {
+
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(new InputSource(new StringReader(XML)));
+
+            NodeList artistList = doc.getElementsByTagName("Artist");
+            NodeList songList = doc.getElementsByTagName("Song");
+            NodeList lyricList = doc.getElementsByTagName("Lyric");
+
+            String[] artists = new String[artistList.getLength()];
+            String[] songs = new String[songList.getLength()];
+            String[] lyrics = new String[lyricList.getLength()];
+
+            for (int i = 0; i < artistList.getLength(); i++) {
+                Node artistNode = artistList.item(i);
+                artists[i] = artistNode.getTextContent();
+            }
+
+            for (int i = 0; i < songList.getLength(); i++) {
+                Node songNode = songList.item(i);
+                songs[i] = songNode.getTextContent();
+            }
+
+            for (int i = 0; i < lyricList.getLength(); i++) {
+                Node lyricNode = lyricList.item(i);
+                lyrics[i] = lyricNode.getTextContent();
+            }
+
+
+            for (String artist : artists) {
+                System.out.println("Artist : " + artist);
+            }
+
+            for (String song : songs) {
+                System.out.println("Song : " + song);
+            }
+
+            for (String lyric : lyrics) {
+                System.out.println("Lyric : " + lyric);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    public static void parseXMLIDAndChecksum(String XML) {
+
+        try {
+
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(new InputSource(new StringReader(XML)));
+
+            NodeList lyricIdList = doc.getElementsByTagName("LyricId");
+            NodeList lyricChecksumList = doc.getElementsByTagName("LyricChecksum");
+
+
+            String[] lyricIds = new String[lyricIdList.getLength()];
+            String[] lyricChecksums = new String[lyricChecksumList.getLength()];
+
+
+            for (int i = 0; i < lyricIdList.getLength(); i++) {
+                Node lyricIdNode = lyricIdList.item(i);
+                lyricIds[i] = lyricIdNode.getTextContent();
+            }
+
+            for (int i = 0; i < lyricChecksumList.getLength(); i++) {
+                Node lyricChecksumNode = lyricChecksumList.item(i);
+                lyricChecksums[i] = lyricChecksumNode.getTextContent();
+            }
+
+            for (String lyricId : lyricIds) {
+                System.out.println("LyricId : " + lyricId);
+            }
+
+            for (String lyricChecksum : lyricChecksums) {
+                System.out.println("LyricChecksum : " + lyricChecksum);
+            }
+
+            searchLyricsByIdAndChecksum(lyricIds[0], lyricChecksums[0]);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public static void favoriteChoice(int favoriteChoice) {
@@ -168,7 +289,7 @@ public class MenuNavigation {
     }
 
     public static void titleArtistChoice(int choice) {
-        //
+
     }
 
     public static void runCLI() {
