@@ -272,6 +272,7 @@ public class MenuNavigation {
     }
 
     public static void favoriteChoice(int favoriteChoice) {
+        System.out.println("\nVoici la liste des chansons parmi les favoris :\n");
 
         if (favoriteChoice == 1) {
             System.out.println("Sélectionner une chanson à afficher : ");
