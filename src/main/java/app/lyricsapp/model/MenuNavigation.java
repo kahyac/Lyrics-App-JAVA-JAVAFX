@@ -43,6 +43,7 @@ public class MenuNavigation {
                 searchChoice = scanner.nextInt();
             } catch (Exception e) {
                 searchChoice = -1;
+                System.out.println("Entrée invalide");
             }
             searchChoice(searchChoice);
         }
@@ -60,6 +61,7 @@ public class MenuNavigation {
                 favoriteChoice = scanner.nextInt();
             } catch (Exception e) {
                 favoriteChoice = -1;
+                System.out.println("Entrée invalide");
             }
             favoriteChoice(favoriteChoice);
         }
@@ -79,6 +81,7 @@ public class MenuNavigation {
             System.out.print("Veuillez inscrire le nom de l'artiste : ");
             String artist = scanner.nextLine();
             searchSongByArtistAndTitle(artist, title);
+            afterSearch();
         }
 
         else if (searchChoice == 2) {
@@ -87,6 +90,7 @@ public class MenuNavigation {
             Scanner scanner = new Scanner(System.in);
             String lyrics = scanner.nextLine();
             searchSongByLyrics(lyrics);
+            afterSearch();
         }
         else if (searchChoice == 3) {
 
@@ -119,7 +123,7 @@ public class MenuNavigation {
             }
 
             in.close();
-            System.out.println(response);
+
             parseXMLIDAndChecksum(String.valueOf(response));
         } catch (Exception e) {
             e.printStackTrace();
@@ -148,7 +152,6 @@ public class MenuNavigation {
             }
 
             in.close();
-            System.out.println(response);
             parseXMLIDAndChecksum(String.valueOf(response));
         } catch (Exception e) {
             e.printStackTrace();
@@ -174,7 +177,7 @@ public class MenuNavigation {
             }
 
             in.close();
-            System.out.println(response);
+
             parseXML(String.valueOf(response));
         } catch (Exception e) {
             e.printStackTrace();
@@ -188,8 +191,8 @@ public class MenuNavigation {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(new InputSource(new StringReader(XML)));
 
-            NodeList artistList = doc.getElementsByTagName("Artist");
-            NodeList songList = doc.getElementsByTagName("Song");
+            NodeList artistList = doc.getElementsByTagName("LyricArtist");
+            NodeList songList = doc.getElementsByTagName("LyricSong");
             NodeList lyricList = doc.getElementsByTagName("Lyric");
 
             String[] artists = new String[artistList.getLength()];
@@ -213,7 +216,7 @@ public class MenuNavigation {
 
 
             for (String artist : artists) {
-                System.out.println("Artist : " + artist);
+                System.out.println("\nArtist : " + artist);
             }
 
             for (String song : songs) {
@@ -240,10 +243,8 @@ public class MenuNavigation {
             NodeList lyricIdList = doc.getElementsByTagName("LyricId");
             NodeList lyricChecksumList = doc.getElementsByTagName("LyricChecksum");
 
-
             String[] lyricIds = new String[lyricIdList.getLength()];
             String[] lyricChecksums = new String[lyricChecksumList.getLength()];
-
 
             for (int i = 0; i < lyricIdList.getLength(); i++) {
                 Node lyricIdNode = lyricIdList.item(i);
@@ -255,24 +256,34 @@ public class MenuNavigation {
                 lyricChecksums[i] = lyricChecksumNode.getTextContent();
             }
 
-            for (String lyricId : lyricIds) {
-                System.out.println("LyricId : " + lyricId);
-            }
-
-            for (String lyricChecksum : lyricChecksums) {
-                System.out.println("LyricChecksum : " + lyricChecksum);
-            }
-
             searchLyricsByIdAndChecksum(lyricIds[0], lyricChecksums[0]);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    public static void afterSearch() {
+        int afterSearchChoice = -1;
+        System.out.println("\n1- Afficher les paroles de la chanson");
+        System.out.println("2- Ajouter/retirer la chanson aux favoris");
+
+        Scanner scanner = new Scanner(System.in);
+        try {
+            afterSearchChoice = scanner.nextInt();
+        } catch (Exception e) {
+            afterSearchChoice = -1;
+            System.out.println("Entrée invalide");
+        }
+        if (afterSearchChoice == 1) {
+            //
+        }
+        if (afterSearchChoice == 2) {
+            //
+        }
     }
 
     public static void favoriteChoice(int favoriteChoice) {
-        System.out.println("\nVoici la liste des chansons parmi les favoris :\n");
 
         if (favoriteChoice == 1) {
             System.out.println("Sélectionner une chanson à afficher : ");
@@ -287,10 +298,6 @@ public class MenuNavigation {
         else {
             System.out.println("Entrée invalide");
         }
-    }
-
-    public static void titleArtistChoice(int choice) {
-
     }
 
     public static void runCLI() {
