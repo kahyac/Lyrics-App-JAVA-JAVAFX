@@ -5,11 +5,23 @@ public class Song {
     private String lyricsId;
     private String artist;
     private String song;
-    public Song(String lyricsCheckSum, String lyricsId,String Artist,String Song){
-        this.lyricsCheckSum=lyricsCheckSum;
-        this.lyricsId=lyricsId;
-        this.artist =Artist;
-        this.song =Song;
+    private String lyrics;
+
+    public Song(String lyricsCheckSum, String lyricsId, String artist, String song){
+        this.lyricsCheckSum= lyricsCheckSum;
+        this.lyricsId= lyricsId;
+        this.artist = artist;
+        this.song = song;
+    }
+
+    public Song(String artist, String song, String lyrics) {
+        this.artist = artist;
+        this.song = song;
+        this.lyrics = lyrics;
+    }
+
+    public String getLyrics() {
+        return lyrics;
     }
 
     @Override
