@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.*;
 
 public class FavoriteManager {
-    private List<Song> favoriteSongs;
-    private File favoriteFile = new File("favoriteFile.xml");
+    private final List<Song> favoriteSongs;
+    private final File favoriteFile = new File("favoriteFile.xml");
 
     public FavoriteManager() {
         favoriteSongs = ReadXMLFile.readFile(favoriteFile);
@@ -30,24 +30,34 @@ public class FavoriteManager {
     }
 
     public void removeFavorite(Song song) throws IOException {
-        favoriteSongs.remove(song);
+        for(Song favorite : getFavoriteSongs()) {
+            if(favorite.toString().equals(song.toString())) {
+                favoriteSongs.remove(favorite);
+                break;
+            }
+        }
         writeFavoriteFile();
     }
 
-    public Song getSong(int i) throws IOException {
+    public Song getSong(int i) {
         return favoriteSongs.get(i);
     }
 
-    public List<Song> getFavoriteSongs() throws IOException {
+    public List<Song> getFavoriteSongs() {
         return favoriteSongs;
     }
 
-    public int favoriteSongSize() throws IOException {
+    public int favoriteSongSize() {
         return favoriteSongs.size();
     }
 
-    public boolean songIsInFavoriteSongs(Song song) throws IOException {
-        return favoriteSongs.contains(song);
+    public boolean songIsInFavoriteSongs(Song song) {
+        for(Song favorite : getFavoriteSongs()) {
+            if (favorite.toString().equals(song.toString())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void main(String [] args) throws IOException {

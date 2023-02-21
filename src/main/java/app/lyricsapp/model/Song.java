@@ -3,8 +3,8 @@ package app.lyricsapp.model;
 public class Song {
     private String lyricsCheckSum;
     private String lyricsId;
-    private String artist;
-    private String song;
+    private final String artist;
+    private final String song;
     private String lyrics;
 
     public Song(String lyricsCheckSum, String lyricsId, String artist, String song){
@@ -24,9 +24,10 @@ public class Song {
         return lyrics;
     }
 
-    @Override
     public String toString() {
-        return "Song : {" + "lyricsCheckSum='" + lyricsCheckSum + '\'' + ", lyricsId='" + lyricsId + '\'' + ", Artist='" + artist + '\'' + ", Song='" + song + '\'' + '}';
+        return "\nChanson : {Artiste = \"" + artist + "\", Chanson = \"" + song + "\"}";
+        /*return "Song : {" + "lyricsCheckSum='" + lyricsCheckSum + '\'' + ", lyricsId='" + lyricsId + '\'' +
+        ", Artist='" + artist + '\'' + ", Song='" + song + '\'' + '}';*/
     }
 
     public String toXML() {

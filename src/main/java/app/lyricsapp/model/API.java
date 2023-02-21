@@ -9,7 +9,6 @@ public class API {
 
     public static String call(String URL) {
 
-
         try {
 
             URL url = new URL(URL);

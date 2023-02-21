@@ -9,8 +9,11 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class LyricsCLI {
+    private static final FavoriteManager favorites = new FavoriteManager();
 
-    private static FavoriteManager favorites = new FavoriteManager();
+    public static void main(String[] args) throws IOException {
+        runCLI();
+    }
 
     public static void display() {
         System.out.println("\n\nMenu principal :");
@@ -21,8 +24,8 @@ public class LyricsCLI {
     }
 
     public static void lobbyChoice(int choice) throws IOException {
-        int searchChoice;
-        int favoriteChoice;
+        int searchChoice = -1;
+        int favoriteChoice = -1;
         int element = 1;
 
         if (choice == 1) {
@@ -88,9 +91,17 @@ public class LyricsCLI {
             System.out.print("Veuillez inscrire le nom de l'artiste : ");
             String artist = scanner.nextLine();
 
+            System.out.println("\nVoici la liste des chansons disponibles\n");
             Search.songByArtistAndTitle(artist, title);
-            System.out.println("\nArtiste : " + Parse.getArtists()[0]);
-            System.out.println("Chanson : " + Parse.getSongs()[0]);
+
+            System.out.print("\nChoisir la musique : ");
+            Scanner scanner2 = new Scanner(System.in);
+            int index = scanner2.nextInt();
+
+            Search.lyricsByArtistAndTitle(Parse.getArtists()[index - 1], Parse.getSongs()[index - 1]);
+
+            System.out.println("\nVous avez sélectionné : Artiste => " + Parse.getArtists()[index - 1]);
+            System.out.println(" ".repeat(24) + "Chanson => " + Parse.getSongs()[index - 1]);
 
             afterSearch();
         }
@@ -101,8 +112,12 @@ public class LyricsCLI {
             String lyrics = scanner.nextLine();
 
             Search.songByLyrics(lyrics);
-            System.out.println("\nArtiste : " + Parse.getArtists()[0]);
-            System.out.println("Chanson : " + Parse.getSongs()[0]);
+
+            System.out.print("\nChoisir la musique : ");
+            Scanner scanner2 = new Scanner(System.in);
+            int index = scanner2.nextInt();
+
+            Search.lyricsByArtistAndTitle(Parse.getArtists()[index - 1], Parse.getSongs()[index - 1]);
 
             afterSearch();
         }
@@ -112,40 +127,40 @@ public class LyricsCLI {
     }
 
     public static void afterSearch() throws IOException {
-        Song song = new Song(Parse.getArtists()[0], Parse.getSongs()[0], Parse.getLyrics()[0]);
         int afterSearchChoice = -1;
+        Song song = new Song(Parse.getArtist(), Parse.getSong(), Parse.getLyric());
 
         System.out.println("\n1- Afficher les paroles de la chanson");
         System.out.println("2- Ajouter/retirer la chanson aux favoris");
         System.out.println("3- Retour au menu principal");
         System.out.print("\nSaisir votre choix : ");
-
         Scanner scanner = new Scanner(System.in);
+
         try {
             afterSearchChoice = scanner.nextInt();
             if(afterSearchChoice < 1 || afterSearchChoice > 3) {
                 throw new Exception("\nLes seules valeurs possibles sont 1, 2 et 3");
             }
-
         } catch (Exception e) {
-            System.out.println("\nEntrée invalide - Retour au menu principal");
-            display();
+            System.out.println("Entrée invalide");
+            afterSearch();
         }
 
         if (afterSearchChoice == 1) {
-            System.out.println("\nLyrics : " + Parse.getLyrics()[0]);
-            display();
+            System.out.println("\nParoles :\n" + Parse.getLyric());
         }
         else if (afterSearchChoice == 2) {
             if (favorites.songIsInFavoriteSongs(song)) {
+                System.out.println(song);
                 favorites.removeFavorite(song);
                 System.out.println("\nLa chanson a été supprimé des favoris");
-                display();
+                afterSearch();
             }
             else {
                 favorites.addFavorite(song);
+                System.out.println(song);
                 System.out.println("\nLa chanson a été ajouté aux favoris");
-                display();
+                afterSearch();
             }
         }
         else if (afterSearchChoice == 3) {
@@ -153,7 +168,7 @@ public class LyricsCLI {
         }
     }
 
-    public static void favoriteChoice(int favoriteChoice) throws IOException {
+    public static void favoriteChoice(int favoriteChoice) {
         int showSong;
         int deleteSong;
 
@@ -207,10 +222,9 @@ public class LyricsCLI {
     }
 
     public static void runCLI() throws IOException {
+        int choice = -1;
 
         System.out.println("\nBienvenue sur LyricsCLI");
-
-        int choice = -1;
 
         while(choice != 3) {
             if(choice != 1 && choice != 2) {
@@ -234,9 +248,4 @@ public class LyricsCLI {
         System.out.println("\nFin du programme");
     }
 
-    public static void main(String[] args) throws IOException {
-        runCLI();
-    }
-
 }
-

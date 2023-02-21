@@ -14,7 +14,6 @@ import java.io.File;
 
 public class LyricsApp extends Application {
 
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/lyricsapp.fxml"));
@@ -35,6 +34,7 @@ public class LyricsApp extends Application {
     }
 
 
-
-    public static void main(String[] args) { launch(args); }
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
