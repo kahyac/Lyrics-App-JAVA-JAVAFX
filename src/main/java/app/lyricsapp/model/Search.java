@@ -14,7 +14,7 @@ public class Search {
 
     public static void songByLyrics(String lyrics) {
 
-        lyrics =  lyrics.replaceAll(" ", "%20");
+        lyrics =  lyrics.replaceAll("\\s+", "%20");
         String url = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricText?lyricText=" + lyrics;
         API.call(url);
         String response = API.call(url);
