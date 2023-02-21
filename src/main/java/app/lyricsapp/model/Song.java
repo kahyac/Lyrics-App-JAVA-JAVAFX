@@ -26,7 +26,7 @@ public class Song {
 
     @Override
     public String toString() {
-        return "Song {" + "lyricsCheckSum='" + lyricsCheckSum + '\'' + ", lyricsId='" + lyricsId + '\'' + ", Artist='" + artist + '\'' + ", Song='" + song + '\'' + '}';
+        return "Song : {" + "lyricsCheckSum='" + lyricsCheckSum + '\'' + ", lyricsId='" + lyricsId + '\'' + ", Artist='" + artist + '\'' + ", Song='" + song + '\'' + '}';
     }
 
     public String toXML() {
