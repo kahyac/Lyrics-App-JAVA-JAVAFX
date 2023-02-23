@@ -60,7 +60,22 @@ public class Parse {
                 Node lyricNode = lyricList.item(0);
                 lyric = lyricNode.getTextContent();
 
-                lyric = lyric.replaceAll("([A-Z])", "\n$1");
+                //lyric = lyric.replaceAll("([A-Z])", "\n$1");
+                StringBuilder builder = new StringBuilder();
+                boolean lastWasUpperCase = false;
+                for (int i = 0; i < lyric.length(); i++) {
+                    char c = lyric.charAt(i);
+                    if (Character.isUpperCase(c)) {
+                        if (lastWasUpperCase && (i == 1 || Character.isWhitespace(lyric.charAt(i - 2)) || lyric.charAt(i - 2) == '-' || lyric.charAt(i - 2) == '\'')) {
+                            builder.append("\n");
+                        }
+                        lastWasUpperCase = true;
+                    } else {
+                        lastWasUpperCase = false;
+                    }
+                    builder.append(c);
+                }
+                lyric = builder.toString();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -109,7 +124,7 @@ public class Parse {
             //System.out.println("Liste de musiques : " + Arrays.toString(songs) + "\n");
 
             for (int i = 0 ; i < songs.length ; i++)
-                System.out.println(i + 1 + "- " + songs[i]);
+                System.out.println(i + 1 + ") " + songs[i]);
 
             Search.lyricsByIdAndChecksum(lyricIds[0], lyricChecksums[0]);
 
@@ -119,3 +134,4 @@ public class Parse {
 
     }
 }
+

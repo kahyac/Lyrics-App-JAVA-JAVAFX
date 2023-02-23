@@ -1,2 +1,8 @@
 <Favorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
+	<Artist>Jackson 5</Artist>
+	<Song>ABC</Song>
+</SongFavorite>
 </Favorite>
