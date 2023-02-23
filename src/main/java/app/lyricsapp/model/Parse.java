@@ -60,22 +60,7 @@ public class Parse {
                 Node lyricNode = lyricList.item(0);
                 lyric = lyricNode.getTextContent();
 
-                //lyric = lyric.replaceAll("([A-Z])", "\n$1");
-                StringBuilder builder = new StringBuilder();
-                boolean lastWasUpperCase = false;
-                for (int i = 0; i < lyric.length(); i++) {
-                    char c = lyric.charAt(i);
-                    if (Character.isUpperCase(c)) {
-                        if (lastWasUpperCase && (i == 1 || Character.isWhitespace(lyric.charAt(i - 2)) || lyric.charAt(i - 2) == '-' || lyric.charAt(i - 2) == '\'')) {
-                            builder.append("\n");
-                        }
-                        lastWasUpperCase = true;
-                    } else {
-                        lastWasUpperCase = false;
-                    }
-                    builder.append(c);
-                }
-                lyric = builder.toString();
+                lyric = lyric.replaceAll("([A-Z])", "\n$1");
 
         } catch (Exception e) {
             e.printStackTrace();
