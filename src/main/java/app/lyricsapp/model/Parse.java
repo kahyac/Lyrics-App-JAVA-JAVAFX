@@ -108,8 +108,9 @@ public class Parse {
 
             //System.out.println("Liste de musiques : " + Arrays.toString(songs) + "\n");
 
-            for (int i = 0 ; i < songs.length ; i++)
+            for (int i = 0 ; i < songs.length ; i++) {
                 System.out.println(i + 1 + ") " + songs[i]);
+            }
 
             Search.lyricsByIdAndChecksum(lyricIds[0], lyricChecksums[0]);
 

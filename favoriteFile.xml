@@ -5,10 +5,4 @@
 	<Artist>Michael Jackson</Artist>
 	<Song>Thriller</Song>
 </SongFavorite>
-<SongFavorite>
-	<LyricsCheckSum>null</LyricsCheckSum>
-	<LyricsId>null</LyricsId>
-	<Artist>Michael Jackson</Artist>
-	<Song>Rock With You</Song>
-</SongFavorite>
 </Favorite>

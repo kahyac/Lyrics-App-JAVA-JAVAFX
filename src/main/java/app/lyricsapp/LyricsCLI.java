@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class LyricsCLI {
     private static final FavoriteManager favorites = new FavoriteManager();
+    private static boolean firstRun = true;
 
     public static void main(String[] args) throws IOException {
         runCLI();
@@ -83,74 +84,88 @@ public class LyricsCLI {
     }
 
     public static void searchChoice(int searchChoice) throws IOException {
-        int index;
+        try {
+            int index;
 
-        if (searchChoice == 1) {
-            System.out.print("\033[0;34m\nVeuillez inscrire le titre de la chanson : \033[0m");
-            Scanner scanner = new Scanner(System.in);
-            String title = scanner.nextLine();
-            System.out.print("\033[0;34mVeuillez inscrire le nom de l'artiste : \033[0m");
-            String artist = scanner.nextLine();
+            if (searchChoice == 1) {
+                System.out.print("\033[0;34m\nVeuillez inscrire le titre de la chanson : \033[0m");
+                Scanner scanner = new Scanner(System.in);
+                String title = scanner.nextLine();
+                System.out.print("\033[0;34mVeuillez inscrire le nom de l'artiste : \033[0m");
+                String artist = scanner.nextLine();
 
-            System.out.println("\nVoici la liste des chansons disponibles :\n\033[0;33m");
-            Search.songByArtistAndTitle(artist, title);
+                System.out.println("\nVoici la liste des chansons disponibles :\n\033[0;33m");
+                Search.songByArtistAndTitle(artist, title);
 
-            System.out.print("\033[0;34m\nChoisir la musique : \033[0m");
-            Scanner scanner2 = new Scanner(System.in);
-
-            try {
-                index = scanner2.nextInt();
-
-                if(index < 1 || index > Parse.getSongs().length) {
-                    throw new Exception("\033[0;30m\nIl faut entrer une valeur parmi les chansons proposées ci-dessus"
-                            + "\033[0m");
-                } else {
-                    Search.lyricsByArtistAndTitle(Parse.getArtists()[index - 1], Parse.getSongs()[index - 1]);
-                    System.out.println("\033[0;33m\nVous avez sélectionné : Artiste => " +
-                            Parse.getArtists()[index - 1]);
-                    System.out.println(" ".repeat(24) + "Chanson => " + Parse.getSongs()[index - 1]);
-
-                    afterSearch();
+                if (Parse.getArtists().length == 0) {
+                    System.out.println("\033[0;30m\nErreur - Votre recherche est introuvable dans l'API ChartLyrics" +
+                            " - Retour au menu principal\033[0m");
+                    runCLI();
                 }
-            } catch (Exception e) {
-                System.out.println("\033[0;30m\nEntrée invalide - Retour au menu principal\033[0m");
+
+                System.out.print("\033[0;34m\nChoisir la musique : \033[0m");
+                Scanner scanner2 = new Scanner(System.in);
+
+                try {
+                    index = scanner2.nextInt();
+
+                    if (index < 1 || index > Parse.getSongs().length) {
+                        throw new Exception("\033[0;30m\nIl faut entrer une valeur parmi les chansons proposées ci-dessus"
+                                + "\033[0m");
+                    } else {
+                        Search.lyricsByArtistAndTitle(Parse.getArtists()[index - 1], Parse.getSongs()[index - 1]);
+                        System.out.println("\033[0;33m\nVous avez sélectionné : Artiste => " +
+                                Parse.getArtists()[index - 1]);
+                        System.out.println(" ".repeat(24) + "Chanson => " + Parse.getSongs()[index - 1]);
+
+                        afterSearch();
+                    }
+                } catch (Exception e) {
+                    System.out.println("\033[0;30m\nEntrée invalide - Retour au menu principal\033[0m");
+                    display();
+                }
+            } else if (searchChoice == 2) {
+                System.out.print("\033[0;34m\nVeuillez inscrire les paroles de la chanson : \033[0m");
+                Scanner scanner = new Scanner(System.in);
+                String lyrics = scanner.nextLine();
+
+                System.out.println("\nVoici la liste des chansons disponibles :\n\033[0;33m");
+                Search.songByLyrics(lyrics);
+
+                if (Parse.getArtists().length == 0) {
+                    System.out.println("\033[0;30m\nErreur - Votre recherche est introuvable dans l'API ChartLyrics" +
+                            " - Retour au menu principal\033[0m");
+                    runCLI();
+                }
+
+                System.out.print("\033[0;34m\nChoisir la musique : \033[0m");
+                Scanner scanner2 = new Scanner(System.in);
+
+                try {
+                    index = scanner2.nextInt();
+
+                    if (index < 1 || index > Parse.getSongs().length) {
+                        throw new Exception("\033[0;30m\nIl faut entrer une valeur parmi les chansons proposées ci-dessus"
+                                + "\033[0m");
+                    } else {
+                        Search.lyricsByArtistAndTitle(Parse.getArtists()[index - 1], Parse.getSongs()[index - 1]);
+                        System.out.println("\033[0;33m\nVous avez sélectionné : Artiste => " +
+                                Parse.getArtists()[index - 1]);
+                        System.out.println(" ".repeat(24) + "Chanson => " + Parse.getSongs()[index - 1]);
+
+                        afterSearch();
+                    }
+                } catch (Exception e) {
+                    System.out.println("\033[0;30m\nEntrée invalide - Retour au menu principal\033[0m");
+                    display();
+                }
+            } else if (searchChoice == 3) {
                 display();
             }
-        }
-
-        else if (searchChoice == 2) {
-            System.out.print("\033[0;34m\nVeuillez inscrire les paroles de la chanson : \033[0m");
-            Scanner scanner = new Scanner(System.in);
-            String lyrics = scanner.nextLine();
-
-            System.out.println("\nVoici la liste des chansons disponibles :\n\033[0;33m");
-            Search.songByLyrics(lyrics);
-
-            System.out.print("\033[0;34m\nChoisir la musique : \033[0m");
-            Scanner scanner2 = new Scanner(System.in);
-
-            try {
-                index = scanner2.nextInt();
-
-                if(index < 1 || index > Parse.getSongs().length) {
-                    throw new Exception("\033[0;30m\nIl faut entrer une valeur parmi les chansons proposées ci-dessus"
-                            + "\033[0m");
-                } else {
-                    Search.lyricsByArtistAndTitle(Parse.getArtists()[index - 1], Parse.getSongs()[index - 1]);
-                    System.out.println("\033[0;33m\nVous avez sélectionné : Artiste => " +
-                            Parse.getArtists()[index - 1]);
-                    System.out.println(" ".repeat(24) + "Chanson => " + Parse.getSongs()[index - 1]);
-
-                    afterSearch();
-                }
-            } catch (Exception e) {
-                System.out.println("\033[0;30m\nEntrée invalide - Retour au menu principal\033[0m");
-                display();
-            }
-        }
-
-        else if(searchChoice == 3) {
-            display();
+        } catch (Exception e) {
+            System.out.println("Erreur : " + e);
+        } finally {
+            runCLI();
         }
     }
 
@@ -254,9 +269,12 @@ public class LyricsCLI {
     }
 
     public static void runCLI() throws IOException {
-        int choice = -1;
+        int choice = 0;
 
-        System.out.println("\033[0;34m\nBienvenue sur LyricsCLI !\033[0m");
+        if(firstRun) {
+            System.out.println("\033[0;34m\nBienvenue sur LyricsCLI !\033[0m");
+            firstRun = false;
+        }
 
         while(choice != 3) {
             if(choice != 1 && choice != 2) {
@@ -281,3 +299,4 @@ public class LyricsCLI {
     }
 
 }
+
