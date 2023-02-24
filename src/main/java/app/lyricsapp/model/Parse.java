@@ -51,16 +51,16 @@ public class Parse {
             NodeList songList = doc.getElementsByTagName("LyricSong");
             NodeList lyricList = doc.getElementsByTagName("Lyric");
 
-                Node artistNode = artistList.item(0);
-                artist = artistNode.getTextContent();
+            Node artistNode = artistList.item(0);
+            artist = artistNode.getTextContent();
 
-                Node songNode = songList.item(0);
-                song = songNode.getTextContent();
+            Node songNode = songList.item(0);
+            song = songNode.getTextContent();
 
-                Node lyricNode = lyricList.item(0);
-                lyric = lyricNode.getTextContent();
+            Node lyricNode = lyricList.item(0);
+            lyric = lyricNode.getTextContent();
 
-                lyric = lyric.replaceAll("([A-Z])", "\n$1");
+            lyric = lyric.replaceAll("([A-Z])", "\n$1");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,18 +106,15 @@ public class Parse {
                 artists[i] = lyricArtistNode.getTextContent();
             }
 
-            //System.out.println("Liste de musiques : " + Arrays.toString(songs) + "\n");
-
             for (int i = 0 ; i < songs.length ; i++) {
-                System.out.println(i + 1 + ") " + songs[i]);
+                System.out.println( i + 1 + ") " + songs[i] + " - " + artists[i] );
             }
-
-            Search.lyricsByIdAndChecksum(lyricIds[0], lyricChecksums[0]);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
+
 }
 

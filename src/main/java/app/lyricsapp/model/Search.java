@@ -16,7 +16,6 @@ public class Search {
     public static void songByLyrics(String lyrics) throws UnsupportedEncodingException {
 
         lyrics =  lyrics.replaceAll("\\s+", "+");
-//        lyrics =  URLEncoder.encode(lyrics , StandardCharsets.UTF_8);
         String url = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricText?lyricText=" + lyrics;
         String response = API.call(url);
         Parse.iDsChecksumsArtistsSongs(String.valueOf(response));
@@ -39,4 +38,6 @@ public class Search {
         Parse.artistSongLyrics(String.valueOf(response));
     }
 
+
 }
+
