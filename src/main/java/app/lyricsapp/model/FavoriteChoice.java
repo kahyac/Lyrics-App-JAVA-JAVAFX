@@ -19,6 +19,7 @@ public class FavoriteChoice {
         if(favoriteChoice == 3) {
             runCLI();
         }
+
         else if (favoriteChoice == 1 || favoriteChoice == 2) {
             if(favorites.favoriteSongSize() != 0) {
                 if (favoriteChoice == 1) {
@@ -31,7 +32,7 @@ public class FavoriteChoice {
                                     "disponibles\033[0m");
                         } else {
                             System.out.println("\033[0;33m\nVous avez sélectionné : " +
-                                    favorites.getSong(showSong - 1));
+                                    favorites.getSong(showSong - 1) + "\nParoles :");
                             System.out.println("\033[0;36m" + favorites.getSong(showSong - 1).getLyrics());
                         }
                         runCLI();

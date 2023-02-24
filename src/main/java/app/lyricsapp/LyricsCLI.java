@@ -39,7 +39,8 @@ public class LyricsCLI {
             lobbyChoice(choice);
         }
 
-        System.out.println("\033[0;36m\nFin du programme\033[0m");
+        System.out.println("\033[0;36m\n\nFin du programme\n\033[0m");
+        System.exit(0);
     }
 
     public static void main(String[] args) throws IOException {

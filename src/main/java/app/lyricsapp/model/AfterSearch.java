@@ -33,7 +33,7 @@ public class AfterSearch {
         }
 
         else if (afterSearchChoice == 2) {
-            System.out.println("\033[0;33m\n" + song);
+            System.out.println("\033[0;33m\n" + song + "\033[0m");
             if (getFavorites().songIsInFavoriteSongs(song)) {
                 getFavorites().removeFavorite(song);
                 System.out.println("\033[0;33m\nLa chanson a été supprimé des favoris\033[0m");

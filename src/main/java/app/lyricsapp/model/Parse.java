@@ -68,7 +68,7 @@ public class Parse {
 
     }
 
-    public static void iDsChecksumsArtistsSongs(String XML) {
+    public static void iDsChecksumsArtistsSongs(String XML, boolean needList) {
 
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -106,8 +106,10 @@ public class Parse {
                 artists[i] = lyricArtistNode.getTextContent();
             }
 
-            for (int i = 0 ; i < songs.length ; i++) {
-                System.out.println( i + 1 + ") " + songs[i] + " - " + artists[i] );
+            if(needList) {
+                for (int i = 0; i < songs.length; i++) {
+                    System.out.println((i + 1) + ") " + songs[i] + " - " + artists[i]);
+                }
             }
 
         } catch (Exception e) {
