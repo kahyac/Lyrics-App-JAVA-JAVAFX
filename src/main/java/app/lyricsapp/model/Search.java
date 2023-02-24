@@ -1,5 +1,7 @@
 package app.lyricsapp.model;
 
+import java.io.IOException;
+
 public class Search {
 
     public static void songByArtistAndTitle(String artist, String title) {
@@ -19,14 +21,7 @@ public class Search {
         Parse.iDsChecksumsArtistsSongs(String.valueOf(response), true);
     }
 
-    /*public static void lyricsByIdAndChecksum(String id, String checksum) {
-
-        String url = "http://api.chartlyrics.com/apiv1.asmx/GetLyric?lyricId=" + id + "&lyricCheckSum=" + checksum;
-        String response = API.call(url);
-        Parse.artistSongLyrics(String.valueOf(response));
-    }*/
-
-    public static void lyricsByArtistAndTitle(String artist, String song) {
+    public static void lyricsByArtistAndTitle(String artist, String song) throws IOException {
 
         artist = artist.replaceAll(" ", "%20");
         song = song.replaceAll(" ", "%20");

@@ -32,7 +32,8 @@ public class FavoriteChoice {
                                     "disponibles\033[0m");
                         } else {
                             System.out.println("\033[0;33m\nVous avez sélectionné : " +
-                                    favorites.getSong(showSong - 1) + "\nParoles :");
+                                    favorites.getSong(showSong - 1));
+                            System.out.println("\nParoles :\n");
                             System.out.println("\033[0;36m" + favorites.getSong(showSong - 1).getLyrics());
                         }
                         runCLI();

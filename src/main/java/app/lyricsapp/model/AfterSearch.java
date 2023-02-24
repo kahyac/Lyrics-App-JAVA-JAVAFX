@@ -28,7 +28,7 @@ public class AfterSearch {
         }
 
         if (afterSearchChoice == 1) {
-            System.out.println("\033[0;33m\nParoles :\033[0m\n\033[0;36m" + Parse.getLyric() + "\n\033[0m");
+            System.out.printf("\033[0;33m\nParoles :\n\033[0m\n\033[0;36m" + Parse.getLyric() + "\n\033[0m");
             afterSearch();
         }
 

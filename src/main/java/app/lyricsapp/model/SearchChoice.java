@@ -18,7 +18,15 @@ public class SearchChoice {
                 String title = scanner.nextLine();
                 System.out.print("\033[0;34mVeuillez inscrire le nom de l'artiste : \033[0m");
                 String artist = scanner.nextLine();
-                Search.songByArtistAndTitle(artist, title);
+
+                try {
+                    Search.songByArtistAndTitle(artist, title);
+                } catch (Exception e) {
+                    System.out.println("\033[0;30mOups... Il semblerait que votre recherche soit introuvable dans " +
+                            "l'API ChartLyrics - Retour au menu principal\033[0m");
+                    runCLI();
+                }
+
 
                 if (Parse.getArtists().length == 0) {
                     System.out.println("\033[0;30m\nOups... Il semblerait que votre recherche soit introuvable dans " +

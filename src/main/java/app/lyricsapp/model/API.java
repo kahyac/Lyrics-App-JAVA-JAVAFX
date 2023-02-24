@@ -2,37 +2,33 @@ package app.lyricsapp.model;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class API {
 
-    public static String call(String URL) {
+    public static String call(String url) {
 
         try {
+            String val;
 
-            URL url = new URL(URL);
+            URL URL = new URL(url);
 
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
+            BufferedReader br = new BufferedReader(new InputStreamReader(URL.openStream()));
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-
-            StringBuilder response = new StringBuilder();
-
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
+            String xmlContent = "";
+            while ((val = br.readLine()) != null) {
+                xmlContent += val + "\n";
             }
 
-            in.close();
-
-            return String.valueOf(response);
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            br.close();
+            return xmlContent;
         }
-        return null;
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return url;
     }
+
 }
 

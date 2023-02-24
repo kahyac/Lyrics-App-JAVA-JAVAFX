@@ -14,6 +14,7 @@ public class Parse {
     private static String artist;
     private static String song;
     private static String lyric;
+    private static String lyricUrl;
     private static String[] lyricIds;
     private static String[] lyricChecksums;
     private static String[] songs;
@@ -58,9 +59,8 @@ public class Parse {
             song = songNode.getTextContent();
 
             Node lyricNode = lyricList.item(0);
-            lyric = lyricNode.getTextContent();
 
-            lyric = lyric.replaceAll("([A-Z])", "\n$1");
+            lyric = lyricNode.getTextContent();
 
         } catch (Exception e) {
             e.printStackTrace();
