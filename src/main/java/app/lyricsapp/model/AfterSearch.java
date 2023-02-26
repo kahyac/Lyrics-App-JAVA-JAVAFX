@@ -11,7 +11,7 @@ public class AfterSearch {
         int afterSearchChoice = -1;
         Song song = new Song(Parse.getArtist(), Parse.getSong(), Parse.getLyric());
 
-        System.out.println("\033[0;34m\nQue souhaitez-vous faire maintenant ?");
+        System.out.println("\033[0;34m\n\nQue souhaitez-vous faire maintenant ?");
         System.out.println("\033[0;32m\n1- Afficher les paroles de la chanson\033[0m");
         System.out.println("\033[0;31m2- Ajouter/retirer la chanson aux favoris\033[0m");
         System.out.println("\033[0;35m3- Retour au menu principal\033[0m");

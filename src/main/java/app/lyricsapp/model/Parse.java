@@ -14,7 +14,6 @@ public class Parse {
     private static String artist;
     private static String song;
     private static String lyric;
-    private static String lyricUrl;
     private static String[] lyricIds;
     private static String[] lyricChecksums;
     private static String[] songs;
