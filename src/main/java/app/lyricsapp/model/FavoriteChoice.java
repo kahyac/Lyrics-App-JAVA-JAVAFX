@@ -22,14 +22,19 @@ public class FavoriteChoice {
 
         else if (favoriteChoice == 1 || favoriteChoice == 2) {
             if(favorites.favoriteSongSize() != 0) {
+
                 if (favoriteChoice == 1) {
-                    System.out.print("\033[0;34mSélectionner une chanson afin d'afficher ses paroles : \033[0m");
+                    System.out.print("\033[0;34mEntrez le numéro de la chanson dont vous souhaitez afficher les " +
+                            "paroles : \033[0m");
+
                     Scanner scanner = new Scanner(System.in);
+
                     try {
+
                         showSong = scanner.nextInt();
-                        if(showSong < 1) {
-                            throw new Exception("\033[0;30m\nVeuillez sélectionner une chanson parmi celles " +
-                                    "disponibles\033[0m");
+                        if(showSong < 1 || showSong > favorites.favoriteSongSize()) {
+                            throw new Exception("\033[0;30m\nLa chanson que vous avez sélectionné " +
+                                    "n'est pas disponible\033[0m");
                         } else {
                             System.out.println("\033[0;33m\nVous avez sélectionné : " +
                                     favorites.getSong(showSong - 1));
@@ -43,13 +48,17 @@ public class FavoriteChoice {
                     }
                 }
                 else {
-                    System.out.print("\033[0;34mSélectionner une chanson à supprimer des favoris : \033[0m");
+                    System.out.print("\033[0;34mEntrez le numéro de la chanson que vous souhaitez supprimer des " +
+                            "favoris : \033[0m");
+
                     Scanner scanner = new Scanner(System.in);
+
                     try {
+
                         deleteSong = scanner.nextInt();
-                        if(deleteSong < 1) {
-                            throw new Exception("\033[0;30m\nVeuillez sélectionner une chanson parmi celles " +
-                                    "disponibles\033[0m");
+                        if(deleteSong < 1 || deleteSong > favorites.favoriteSongSize()) {
+                            throw new Exception("\033[0;30m\nLa chanson que vous avez sélectionné " +
+                                    "n'est pas disponible\033[0m");
                         } else {
                             System.out.println("\033[0;33m\nVous avez décidé de supprimer des favoris : " +
                                     favorites.getSong(deleteSong - 1));

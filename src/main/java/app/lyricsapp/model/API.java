@@ -23,8 +23,8 @@ public class API {
             br.close();
             return xmlContent;
         }
-        catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
         return url;

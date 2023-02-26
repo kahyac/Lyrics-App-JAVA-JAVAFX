@@ -29,7 +29,8 @@ public class LyricsCLI {
             try {
                 choice = scanner.nextInt();
                 if(choice < 1 || choice > 3) {
-                    throw new Exception("\033[0;30m\nLes seules valeurs possibles sont 1, 2 et 3\033[0m");
+                    throw new Exception("\033[0;30m\nLes seules valeurs possibles sont 1, 2 et 3" +
+                            "\033[0m");
                 }
             } catch (Exception e) {
                 choice = -1;

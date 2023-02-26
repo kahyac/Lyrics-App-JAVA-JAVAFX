@@ -24,7 +24,7 @@ public class AfterSearch {
                 throw new Exception("\033[0;30m\nLes seules valeurs possibles sont 1, 2 et 3\033[0m");
             }
         } catch (Exception e) {
-            System.out.println("\033[0;30m\nEntrée invalide\033[0m");
+            System.out.println("\033[0;30m\nEntrée invalide - Veuillez réessayer\033[0m");
             afterSearch();
         }
 

@@ -19,14 +19,17 @@ public class SearchChoice {
                 System.out.print("\033[0;34mVeuillez inscrire le nom de l'artiste : \033[0m");
                 String artist = scanner.nextLine();
 
-                try {
-                    Search.songByArtistAndTitle(artist, title);
-                } catch (Exception e) {
-                    System.out.println("\033[0;30mOups... Il semblerait que votre recherche soit introuvable dans " +
-                            "l'API ChartLyrics - Retour au menu principal\033[0m");
+                if((!title.matches(".*\\d.*\\d.*") & !title.matches(".*[a-zA-Z].*[a-zA-Z].*") &
+                        !title.matches(".*[a-zA-Z].*\\d.*|.*\\d.*[a-zA-Z].*")) || title.length() < 2 ||
+                        (!artist.matches(".*\\d.*\\d.*") & !artist.matches(".*[a-zA-Z].*[a-zA-Z].*") &
+                                !artist.matches(".*[a-zA-Z].*\\d.*|.*\\d.*[a-zA-Z].*")) || artist.length() < 2) {
+
+                    System.out.println("\033[0;30m\nVous devez entrez au moins deux caractères valides pour l'artiste"
+                            + " et le titre de la chanson - Retour au menu principal\033[0m");
                     runCLI();
                 }
 
+                Search.songByArtistAndTitle(artist, title);
 
                 if (Parse.getArtists().length == 0) {
                     System.out.println("\033[0;30m\nOups... Il semblerait que votre recherche soit introuvable dans " +
@@ -47,6 +50,14 @@ public class SearchChoice {
                 Scanner scanner = new Scanner(System.in);
                 String lyrics = scanner.nextLine();
 
+                if ((!lyrics.matches(".*\\d.*\\d.*") & !lyrics.matches(".*[a-zA-Z].*[a-zA-Z].*") &
+                        !lyrics.matches(".*[a-zA-Z].*\\d.*|.*\\d.*[a-zA-Z].*")) || lyrics.length() < 2) {
+
+                    System.out.println("\033[0;30m\nVous devez entrez au moins deux caractères valides pour les " +
+                            "paroles de la chanson - Retour au menu principal\033[0m");
+                    runCLI();
+                }
+
                 System.out.println("\nVoici la liste des chansons disponibles :\n\033[0;33m");
                 Search.songByLyrics(lyrics);
 
@@ -63,8 +74,8 @@ public class SearchChoice {
                     index = scanner2.nextInt();
 
                     if (index < 1 || index > Parse.getSongs().length) {
-                        throw new Exception("\033[0;30m\nIl faut entrer une valeur parmi les chansons proposées " +
-                                "ci-dessus\033[0m");
+                        throw new Exception("\033[0;30m\nIl faut entrer une valeur parmi les chansons" +
+                                " proposées ci-dessus\033[0m");
                     } else {
                         Search.lyricsByArtistAndTitle(Parse.getArtists()[index - 1], Parse.getSongs()[index - 1]);
                         System.out.println("\033[0;33m\nVous avez sélectionné : Artiste => " +

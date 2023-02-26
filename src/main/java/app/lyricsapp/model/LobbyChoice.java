@@ -26,7 +26,8 @@ public class LobbyChoice {
             try {
                 searchChoice = scanner.nextInt();
                 if(searchChoice < 1 || searchChoice > 3) {
-                    throw new Exception("\033[0;30m\nLes seules valeurs possibles sont 1, 2 et 3\033[0m");
+                    throw new Exception("\033[0;30m\nLes seules valeurs possibles sont 1, 2 et 3" +
+                            "\033[0m");
                 }
             } catch (Exception e) {
                 searchChoice = -1;
@@ -58,7 +59,8 @@ public class LobbyChoice {
             try {
                 favoriteChoice = scanner.nextInt();
                 if(favoriteChoice < 1 || favoriteChoice > 3) {
-                    throw new Exception("\033[0;30m\nLes seules valeurs possibles sont 1, 2 et 3\033[0m");
+                    throw new Exception("\033[0;30m\nLes seules valeurs possibles sont 1, 2 et 3" +
+                            "\033[0m");
                 }
             } catch (Exception e) {
                 favoriteChoice = -1;

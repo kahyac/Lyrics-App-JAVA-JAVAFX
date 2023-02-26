@@ -58,16 +58,14 @@ public class Parse {
             song = songNode.getTextContent();
 
             Node lyricNode = lyricList.item(0);
-
             lyric = lyricNode.getTextContent();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
-    public static void iDsChecksumsArtistsSongs(String XML, boolean needList) {
+    public static void idsChecksumsArtistsSongs(String XML, boolean needList) {
 
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -114,7 +112,6 @@ public class Parse {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
 }

@@ -1,7 +1,5 @@
 package app.lyricsapp.model;
 
-import java.io.IOException;
-
 public class Search {
 
     public static void songByArtistAndTitle(String artist, String title) {
@@ -10,7 +8,7 @@ public class Search {
         title = title.replaceAll(" ", "%20");
         String url = "http://api.chartlyrics.com/apiv1.asmx/SearchLyric?artist=" + artist + "&song=" + title;
         String response = API.call(url);
-        Parse.iDsChecksumsArtistsSongs(String.valueOf(response), false);
+        Parse.idsChecksumsArtistsSongs(String.valueOf(response), false);
     }
 
     public static void songByLyrics(String lyrics) {
@@ -18,10 +16,10 @@ public class Search {
         lyrics = lyrics.replaceAll("\\s+", "+");
         String url = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricText?lyricText=" + lyrics;
         String response = API.call(url);
-        Parse.iDsChecksumsArtistsSongs(String.valueOf(response), true);
+        Parse.idsChecksumsArtistsSongs(String.valueOf(response), true);
     }
 
-    public static void lyricsByArtistAndTitle(String artist, String song) throws IOException {
+    public static void lyricsByArtistAndTitle(String artist, String song) {
 
         artist = artist.replaceAll(" ", "%20");
         song = song.replaceAll(" ", "%20");

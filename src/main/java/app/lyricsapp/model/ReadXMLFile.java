@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadXMLFile {
+
     public static List<Song> readFile(File file) {
 
         List<Song> songs = new ArrayList<>();
@@ -47,7 +48,7 @@ public class ReadXMLFile {
                     Song song = new Song(lyricsCheckSum,lyricsId,Artist,Song);
                     songs.add(song);
 
-/*
+                    /*
                     System.out.println("TrackId : " + eElement.getElementsByTagName("TrackId").item(0).getTextContent());
                     System.out.println("LyricChecksum : " + eElement.getElementsByTagName("LyricChecksum").item(0).getTextContent());
                     System.out.println("LyricId : " + eElement.getElementsByTagName("LyricId").item(0).getTextContent());
@@ -56,14 +57,14 @@ public class ReadXMLFile {
                     System.out.println("Artist : " + eElement.getElementsByTagName("Artist").item(0).getTextContent());
                     System.out.println("Song : " + eElement.getElementsByTagName("Song").item(0).getTextContent());
                     System.out.println("SongRank : " + eElement.getElementsByTagName("SongRank").item(0).getTextContent());
+                    */
 
- */
                 }
             }
 
 
         } catch (Exception e) {
-            //DO_NOTHING
+            System.out.println("Erreur");
         }
 
         return songs;
