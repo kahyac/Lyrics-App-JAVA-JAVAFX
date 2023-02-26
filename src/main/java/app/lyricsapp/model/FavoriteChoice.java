@@ -33,8 +33,8 @@ public class FavoriteChoice {
                         } else {
                             System.out.println("\033[0;33m\nVous avez sélectionné : " +
                                     favorites.getSong(showSong - 1));
-                            System.out.println("\nParoles :\n");
-                            System.out.println("\033[0;36m" + favorites.getSong(showSong - 1).getLyrics());
+                            System.out.println("\033[0;36m\nParoles :\n");
+                            System.out.println("\033[0;33m" + favorites.getSong(showSong - 1).getLyrics());
                         }
                         runCLI();
                     } catch (Exception e) {
