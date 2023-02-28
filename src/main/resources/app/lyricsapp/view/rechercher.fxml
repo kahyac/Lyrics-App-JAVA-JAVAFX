@@ -17,14 +17,13 @@
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button layoutX="683.0" layoutY="488.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="35.0"
-              prefWidth="203.0" text="Retour au menu principal">
+      <Button layoutX="683.0" layoutY="488.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="35.0" prefWidth="203.0" text="Retour au menu principal">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <TextField layoutX="305.0" layoutY="217.0" prefHeight="46.0" prefWidth="290.0" promptText="exemple: The Kinks" />
-      <TextField layoutX="306.0" layoutY="277.0" prefHeight="46.0" prefWidth="290.0" promptText="exemple: Sunny Afternoon" />
+      <TextField fx:id="textField1" layoutX="305.0" layoutY="217.0" prefHeight="46.0" prefWidth="290.0" promptText="exemple: Sunny Afternoon" />
+      <TextField fx:id="textField2" layoutX="306.0" layoutY="277.0" prefHeight="46.0" prefWidth="290.0" promptText="exemple: The Kinks" />
       <Label alignment="CENTER_RIGHT" layoutX="90.0" layoutY="217.0" prefHeight="46.0" prefWidth="209.0" text="Le titre de la chanson:">
          <font>
             <Font size="17.0" />
@@ -35,5 +34,6 @@
             <Font size="17.0" />
          </font>
       </Label>
+      <Button layoutX="346.0" layoutY="336.0" onAction="#getTextAndSearch" mnemonicParsing="false" prefHeight="46.0" prefWidth="209.0" text="Rechercher" />
    </children>
 </AnchorPane>

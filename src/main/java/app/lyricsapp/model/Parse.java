@@ -14,8 +14,6 @@ public class Parse {
     private static String artist;
     private static String song;
     private static String lyric;
-    private static String[] lyricIds;
-    private static String[] lyricChecksums;
     private static String[] songs;
     private static String[] artists;
 
@@ -77,21 +75,8 @@ public class Parse {
             NodeList songList = doc.getElementsByTagName("Song");
             NodeList artistList = doc.getElementsByTagName("Artist");
 
-            lyricIds = new String[lyricIdList.getLength()];
-            lyricChecksums = new String[lyricChecksumList.getLength()];
             songs = new String[songList.getLength()];
             artists = new String[artistList.getLength()];
-
-
-            for (int i = 0; i < lyricIdList.getLength(); i++) {
-                Node lyricIdNode = lyricIdList.item(i);
-                lyricIds[i] = lyricIdNode.getTextContent();
-            }
-
-            for (int i = 0; i < lyricChecksumList.getLength(); i++) {
-                Node lyricChecksumNode = lyricChecksumList.item(i);
-                lyricChecksums[i] = lyricChecksumNode.getTextContent();
-            }
 
             for (int i = 0; i < songList.getLength(); i++) {
                 Node lyricSongNode = songList.item(i);

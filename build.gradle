@@ -28,6 +28,7 @@ test {
 
 javafx {
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.web']
+    version = '19'
 }
 
 repositories {

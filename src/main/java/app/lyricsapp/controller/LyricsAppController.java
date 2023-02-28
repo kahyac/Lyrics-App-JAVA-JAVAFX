@@ -1,5 +1,6 @@
 package app.lyricsapp.controller;
 
+import app.lyricsapp.model.Search;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -9,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -32,7 +34,16 @@ public class LyricsAppController implements Initializable {
     private Button exitButton;
 
     @FXML
+    private Button searchButton;
+
+    @FXML
     private AnchorPane scenePane;
+
+    @FXML
+    private TextField textField1;
+
+    @FXML
+    private TextField textField2;
 
     @FXML
     protected void switchToRechercher(ActionEvent event) throws IOException {
@@ -93,5 +104,24 @@ public class LyricsAppController implements Initializable {
         goodByeWorldButton.setVisible(false);
         if (!helloWorldButton.isVisible())
             helloWorldButton.setVisible(true);
+    }
+
+    @FXML
+    private void getTextAndSearch() throws IOException{
+
+        System.out.println("Click sur recherche");
+
+        Search.songByArtistAndTitle(textField2.getText(), textField1.getText());
+/*
+            try {
+                root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/lyrics.fxml"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();*/
+
     }
 }
