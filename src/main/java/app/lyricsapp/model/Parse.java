@@ -70,8 +70,6 @@ public class Parse {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(new InputSource(new StringReader(XML)));
 
-            NodeList lyricIdList = doc.getElementsByTagName("LyricId");
-            NodeList lyricChecksumList = doc.getElementsByTagName("LyricChecksum");
             NodeList songList = doc.getElementsByTagName("Song");
             NodeList artistList = doc.getElementsByTagName("Artist");
 
