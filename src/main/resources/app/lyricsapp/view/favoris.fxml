@@ -7,24 +7,19 @@
 
 <AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.lyricsapp.controller.LyricsAppController">
    <children>
-      <Button layoutX="196.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchToRechercher" prefHeight="141.0" prefWidth="191.0" text="Rechercher une chanson" textAlignment="JUSTIFY">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="532.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchToFavoris" prefHeight="141.0" prefWidth="191.0" text="Acceder aux favoris">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
       <Button fx:id="exitButton" layoutX="683.0" layoutY="551.0" mnemonicParsing="false" onAction="#quitingAction" prefHeight="35.0" prefWidth="203.0" text="Quitter">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="77.0" prefHeight="126.0" prefWidth="790.0" text="Lyrics App" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="77.0" prefHeight="126.0" prefWidth="790.0" text="Favorites" textAlignment="CENTER">
          <font>
             <Font size="76.0" />
          </font>
       </Label>
+      <Button layoutX="683.0" layoutY="488.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="35.0" prefWidth="203.0" text="Retour au menu principal">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
