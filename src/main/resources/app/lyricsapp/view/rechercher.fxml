@@ -34,6 +34,6 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Button layoutX="346.0" layoutY="336.0" onAction="#getTextAndSearch" mnemonicParsing="false" prefHeight="46.0" prefWidth="209.0" text="Rechercher" />
+      <Button layoutX="346.0" layoutY="336.0" mnemonicParsing="false" onAction="#switchToResult" prefHeight="46.0" prefWidth="209.0" text="Rechercher" />
    </children>
 </AnchorPane>

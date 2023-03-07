@@ -37,6 +37,9 @@ public class LyricsAppController implements Initializable {
     private Button searchButton;
 
     @FXML
+    private static Label lyricstext;
+
+    @FXML
     private AnchorPane scenePane;
 
     @FXML
@@ -83,6 +86,16 @@ public class LyricsAppController implements Initializable {
 
     }
 
+    @FXML
+    protected void switchToResult(ActionEvent event) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/result.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @FXML private Button helloWorldButton;
     @FXML private Button goodByeWorldButton;
     @FXML private Label label;
@@ -105,6 +118,11 @@ public class LyricsAppController implements Initializable {
         if (!helloWorldButton.isVisible())
             helloWorldButton.setVisible(true);
     }
+
+   // @FXML
+    //private void setLyricstext() throws IOException {
+     //   lyricstext.setText(getTextAndSearch());
+   // }
 
     @FXML
     private void getTextAndSearch() throws IOException{
