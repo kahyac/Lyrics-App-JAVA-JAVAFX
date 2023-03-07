@@ -142,4 +142,5 @@ public class LyricsAppController implements Initializable {
             stage.show();*/
 
     }
+
 }
