@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -35,5 +36,6 @@
          </font>
       </Label>
       <Button layoutX="346.0" layoutY="336.0" mnemonicParsing="false" onAction="#getTextAndSearch" prefHeight="46.0" prefWidth="209.0" text="Rechercher" />
+      <TextArea fx:id="lyricsByArtistAndTitle" layoutX="55.0" layoutY="382.0" prefHeight="200.0" prefWidth="422.0" />
    </children>
 </AnchorPane>

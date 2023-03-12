@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -47,6 +48,9 @@ public class LyricsAppController implements Initializable {
 
     @FXML
     private TextField textField2;
+
+    @FXML
+    private TextArea lyricsByArtistAndTitle;
 
     @FXML
     protected void switchToRechercher(ActionEvent event) throws IOException {
@@ -126,10 +130,9 @@ public class LyricsAppController implements Initializable {
 
     @FXML
     private void getTextAndSearch() throws IOException{
-
-        System.out.println("Click sur recherche");
-
-        Search.songByArtistAndTitle(textField2.getText(), textField1.getText());
+        String artist = textField2.getText();
+        String title = textField1.getText();
+        lyricsByArtistAndTitle.setText(Search.lyricsByArtistAndTitle(artist, title));
 /*
             try {
                 root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/lyrics.fxml"));
@@ -142,5 +145,4 @@ public class LyricsAppController implements Initializable {
             stage.show();*/
 
     }
-
 }
