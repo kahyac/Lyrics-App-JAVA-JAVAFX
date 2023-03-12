@@ -1,6 +1,8 @@
 package app.lyricsapp.controller;
 
+import app.lyricsapp.model.Parse;
 import app.lyricsapp.model.Search;
+import app.lyricsapp.model.Song;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -18,7 +20,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
+
+import static app.lyricsapp.model.Search.*;
 
 public class LyricsAppController implements Initializable {
 
@@ -135,7 +140,16 @@ public class LyricsAppController implements Initializable {
     private void getTextAndSearch() throws IOException{
         String artist = textField2.getText();
         String title = textField1.getText();
-        lyricsByArtistAndTitle.setText(Search.lyricsByArtistAndTitle(artist, title));
+        songByArtistAndTitle(artist,title);
+        if (Parse.getArtists().length == 0){
+
+        }
+        lyricsByArtistAndTitle(artist,title);
+        lyricsByArtistAndTitle.setText(Parse.getLyric());
+        //lyricsByArtistAndTitle.setText(lyricsByArtistAndTitle(artist, title));
+        //Song song = new Song(artist,title,lyricsByArtistAndTitle(artist, title));
+       // lyricsByArtistAndTitle.setText(song.getLyrics());
+
 /*
             try {
                 root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/lyrics.fxml"));
@@ -151,6 +165,13 @@ public class LyricsAppController implements Initializable {
 
     @FXML
     private void getByLyrics() throws IOException{
+        String lyrics = textFieldLyrics.getText();
+        songByLyrics(lyrics);
+        lyricsByArtistAndTitle(Parse.getArtists()[0],Parse.getSongs()[0]);
+        if (Parse.getArtists().length == 0){
+
+        }
+        lyricsByArtistAndTitle.setText(Parse.getLyric());
 
     }
 }

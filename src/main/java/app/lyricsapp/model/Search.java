@@ -19,7 +19,7 @@ public class Search {
         Parse.idsChecksumsArtistsSongs(String.valueOf(response), true);
     }
 
-    public static String lyricsByArtistAndTitle(String artist, String song) {
+    public static void lyricsByArtistAndTitle(String artist, String song) {
 
         artist = artist.replaceAll(" ", "%20");
         song = song.replaceAll(" ", "%20");
@@ -27,7 +27,6 @@ public class Search {
         String url = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist=" + artist + "&song=" + song;
         String response = API.call(url);
         Parse.artistSongLyrics(String.valueOf(response));
-        return response;
     }
 
 }

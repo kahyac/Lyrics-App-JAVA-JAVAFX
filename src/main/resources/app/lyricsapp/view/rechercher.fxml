@@ -34,7 +34,7 @@
       <Button layoutX="103.0" layoutY="157.0" mnemonicParsing="false" onAction="#getTextAndSearch" prefHeight="46.0" prefWidth="176.0" text="Rechercher par titre et nom" />
       <TextArea fx:id="lyricsByArtistAndTitle" layoutX="58.0" layoutY="379.0" prefHeight="200.0" prefWidth="422.0" />
       <Button layoutX="400.0" layoutY="157.0" mnemonicParsing="false" onAction="#getByLyrics" prefHeight="46.0" prefWidth="176.0" text="Rechercher par paroles" />
-      <TextField fx:id="textField11" layoutX="384.0" layoutY="85.0" prefHeight="46.0" prefWidth="209.0" />
+      <TextField fx:id="textFieldLyrics" layoutX="384.0" layoutY="85.0" prefHeight="46.0" prefWidth="209.0" />
       <Label alignment="CENTER_RIGHT" layoutX="303.0" layoutY="31.0" prefHeight="46.0" prefWidth="209.0" text="Paroles:">
          <font>
             <Font size="17.0" />
