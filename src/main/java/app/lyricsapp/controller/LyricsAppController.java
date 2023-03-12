@@ -47,6 +47,9 @@ public class LyricsAppController implements Initializable {
     private TextField textField1;
 
     @FXML
+    private TextField textFieldLyrics;
+
+    @FXML
     private TextField textField2;
 
     @FXML
@@ -143,6 +146,11 @@ public class LyricsAppController implements Initializable {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();*/
+
+    }
+
+    @FXML
+    private void getByLyrics() throws IOException{
 
     }
 }
