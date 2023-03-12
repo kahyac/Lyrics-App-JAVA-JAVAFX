@@ -9,7 +9,6 @@ public class Search {
         String url = "http://api.chartlyrics.com/apiv1.asmx/SearchLyric?artist=" + artist + "&song=" + title;
         String response = API.call(url);
         Parse.idsChecksumsArtistsSongs(String.valueOf(response), false);
-        System.out.println(response);
     }
 
     public static void songByLyrics(String lyrics) {
