@@ -1,28 +1,25 @@
 package app.lyricsapp.controller;
 
 import app.lyricsapp.model.Parse;
-import app.lyricsapp.model.Search;
-import app.lyricsapp.model.Song;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 
+import static app.lyricsapp.model.Parse.*;
 import static app.lyricsapp.model.Search.*;
 
 public class LyricsAppController implements Initializable {
@@ -59,6 +56,13 @@ public class LyricsAppController implements Initializable {
 
     @FXML
     private TextArea lyricsByArtistAndTitle;
+
+    private String[] songs;
+
+    private int songIndex;
+
+    @FXML
+    private ListView<String> songList;
 
     @FXML
     protected void switchToRechercher(ActionEvent event) throws IOException {
@@ -101,7 +105,7 @@ public class LyricsAppController implements Initializable {
     @FXML
     protected void switchToResult(ActionEvent event) throws IOException {
 
-        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/result.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/resultLyrics.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -141,11 +145,11 @@ public class LyricsAppController implements Initializable {
         String artist = textField2.getText();
         String title = textField1.getText();
         songByArtistAndTitle(artist,title);
-        if (Parse.getArtists().length == 0){
+        if (getArtists().length == 0){
 
         }
         lyricsByArtistAndTitle(artist,title);
-        lyricsByArtistAndTitle.setText(Parse.getLyric());
+        lyricsByArtistAndTitle.setText(getLyric());
         //lyricsByArtistAndTitle.setText(lyricsByArtistAndTitle(artist, title));
         //Song song = new Song(artist,title,lyricsByArtistAndTitle(artist, title));
        // lyricsByArtistAndTitle.setText(song.getLyrics());
@@ -167,11 +171,29 @@ public class LyricsAppController implements Initializable {
     private void getByLyrics() throws IOException{
         String lyrics = textFieldLyrics.getText();
         songByLyrics(lyrics);
-        lyricsByArtistAndTitle(Parse.getArtists()[0],Parse.getSongs()[0]);
-        if (Parse.getArtists().length == 0){
+        lyricsByArtistAndTitle(getArtists()[0], getSongs()[0]);
+        if (getArtists().length == 0){
 
         }
-        lyricsByArtistAndTitle.setText(Parse.getLyric());
+        lyricsByArtistAndTitle.setText(getLyric());
 
+    }
+
+    @FXML
+    private void getListByLyrics() throws IOException {
+        String lyrics = textFieldLyrics.getText();
+        songByLyrics(lyrics);
+        songList.getItems().addAll(Parse.getSongs());
+        songList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
+                songIndex= songList.getSelectionModel().getSelectedIndex();
+                String titleName = getSongs()[songIndex];
+                String artistName = getArtists()[songIndex];
+                lyricsByArtistAndTitle(artistName, titleName);
+                lyricsByArtistAndTitle.setText(getLyric());
+            }
+        });
     }
 }

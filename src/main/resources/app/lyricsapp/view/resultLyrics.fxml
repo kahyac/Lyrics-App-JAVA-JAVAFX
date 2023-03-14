@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -33,7 +32,8 @@
          </font>
       </Label>
       <Button layoutX="103.0" layoutY="157.0" mnemonicParsing="false" onAction="#getTextAndSearch" prefHeight="46.0" prefWidth="176.0" text="Rechercher par titre et nom" />
-      <Button layoutX="400.0" layoutY="157.0" mnemonicParsing="false" onAction="#getListByLyrics" prefHeight="46.0" prefWidth="176.0" text="Rechercher par paroles" />
+      <TextArea fx:id="lyricsByArtistAndTitle" layoutX="58.0" layoutY="379.0" prefHeight="200.0" prefWidth="422.0" />
+      <Button layoutX="400.0" layoutY="157.0" mnemonicParsing="false" onAction="#getByLyrics" prefHeight="46.0" prefWidth="176.0" text="Rechercher par paroles" />
       <TextField fx:id="textFieldLyrics" layoutX="384.0" layoutY="85.0" prefHeight="46.0" prefWidth="209.0" />
       <Label alignment="CENTER_RIGHT" layoutX="303.0" layoutY="31.0" prefHeight="46.0" prefWidth="209.0" text="Paroles:">
          <font>
@@ -42,7 +42,5 @@
       </Label>
       <Separator layoutX="313.0" orientation="VERTICAL" prefHeight="232.0" prefWidth="64.0" />
       <Separator layoutX="1.0" layoutY="220.0" prefHeight="25.0" prefWidth="900.0" />
-      <ListView fx:id="songList" fixedCellSize="50.0" layoutX="14.0" layoutY="256.0" prefHeight="320.0" prefWidth="289.0" />
-      <TextArea fx:id="lyricsByArtistAndTitle" layoutX="319.0" layoutY="256.0" prefHeight="320.0" prefWidth="353.0" />
    </children>
 </AnchorPane>
