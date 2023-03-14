@@ -1,5 +1,6 @@
 package app.lyricsapp.controller;
 
+import app.lyricsapp.Data;
 import app.lyricsapp.model.Parse;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -31,18 +32,6 @@ public class LyricsAppController implements Initializable {
     private Parent root;
 
     @FXML
-    private Label welcomeText;
-
-    @FXML
-    private Button exitButton;
-
-    @FXML
-    private Button searchButton;
-
-    @FXML
-    private static Label lyricstext;
-
-    @FXML
     private AnchorPane scenePane;
 
     @FXML
@@ -63,6 +52,8 @@ public class LyricsAppController implements Initializable {
 
     @FXML
     private ListView<String> songList;
+
+    Data data = Data.getNewData();
 
     @FXML
     protected void switchToRechercher(ActionEvent event) throws IOException {
@@ -106,39 +97,13 @@ public class LyricsAppController implements Initializable {
     protected void switchToResult(ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/resultLyrics.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow() ;
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    @FXML private Button helloWorldButton;
-    @FXML private Button goodByeWorldButton;
-    @FXML private Label label;
 
-    //    @Override
-    public void initialize(URL location, ResourceBundle resourceBundle) {}
-
-    @FXML
-    private void displayHelloWorld() {
-        label.setText("Hello World");
-        helloWorldButton.setVisible(false);
-        if (!goodByeWorldButton.isVisible())
-            goodByeWorldButton.setVisible(true);
-    }
-
-    @FXML
-    private void goodByeWorld() {
-        label.setText("");
-        goodByeWorldButton.setVisible(false);
-        if (!helloWorldButton.isVisible())
-            helloWorldButton.setVisible(true);
-    }
-
-   // @FXML
-    //private void setLyricstext() throws IOException {
-     //   lyricstext.setText(getTextAndSearch());
-   // }
 
     @FXML
     private void getTextAndSearch() throws IOException{
@@ -191,9 +156,16 @@ public class LyricsAppController implements Initializable {
                 songIndex= songList.getSelectionModel().getSelectedIndex();
                 String titleName = getSongs()[songIndex];
                 String artistName = getArtists()[songIndex];
+                data.setSongArtist(artistName);
+                data.setSongTitle(titleName);
                 lyricsByArtistAndTitle(artistName, titleName);
                 lyricsByArtistAndTitle.setText(getLyric());
             }
         });
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }
