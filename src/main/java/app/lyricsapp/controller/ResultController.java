@@ -1,6 +1,9 @@
 package app.lyricsapp.controller;
 
 import app.lyricsapp.Data;
+import app.lyricsapp.model.FavoriteManager;
+import app.lyricsapp.model.Parse;
+import app.lyricsapp.model.Song;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +11,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -42,6 +48,23 @@ public class ResultController implements Initializable {
 
     @FXML
     private TextArea lyricsByArtistAndTitle;
+
+    @FXML
+    private CheckBox addToFavorites;
+
+    /* public void change(ActionEvent event) throws IOException {
+        Song thisSong = new Song(data.getSongArtist(), data.getSongTitle(), Parse.getLyric());
+        if (addToFavorites.isSelected()) {
+            // heart.setImage(empty);
+        }
+        else {
+            // heart.setImage(full);
+            ;
+        }
+    }
+
+
+     */
 
     public static String capitalizeString(String string) {
         char[] chars = string.toLowerCase().toCharArray();

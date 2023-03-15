@@ -27,4 +27,5 @@ public class Data {
     public static void setSongTitle(String songTitle) {
         Data.songTitle = songTitle;
     }
+
 }

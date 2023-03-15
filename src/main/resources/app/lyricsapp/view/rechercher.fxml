@@ -10,38 +10,43 @@
 
 <AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.lyricsapp.controller.LyricsAppController">
    <children>
-      <Button fx:id="exitButton" layoutX="683.0" layoutY="551.0" mnemonicParsing="false" onAction="#quitingAction" prefHeight="35.0" prefWidth="203.0" text="Quitter">
+      <Button fx:id="exitButton" layoutX="682.0" layoutY="535.0" mnemonicParsing="false" onAction="#quitingAction" prefHeight="35.0" prefWidth="176.0" text="Quitter">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button layoutX="683.0" layoutY="488.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="35.0" prefWidth="203.0" text="Retour au menu principal">
+      <Button layoutX="24.0" layoutY="33.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="14.0" prefWidth="49.0" text="&lt;-">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <TextField fx:id="textField1" layoutX="86.0" layoutY="31.0" prefHeight="46.0" prefWidth="209.0" promptText="exemple: Sunny Afternoon" />
-      <TextField fx:id="textField2" layoutX="86.0" layoutY="93.0" prefHeight="46.0" prefWidth="209.0" promptText="exemple: The Kinks" />
-      <Label alignment="CENTER_RIGHT" layoutX="-136.0" layoutY="31.0" prefHeight="46.0" prefWidth="209.0" text="Titre:">
+      <TextField fx:id="textField1" layoutX="665.0" layoutY="33.0" prefHeight="46.0" prefWidth="209.0" promptText="exemple: Sunny Afternoon" />
+      <TextField fx:id="textField2" layoutX="665.0" layoutY="93.0" prefHeight="46.0" prefWidth="209.0" promptText="exemple: The Kinks" />
+      <Label alignment="CENTER_RIGHT" layoutX="450.0" layoutY="33.0" prefHeight="46.0" prefWidth="209.0" text="Titre:">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="-129.0" layoutY="93.0" prefHeight="46.0" prefWidth="209.0" text="Artiste:">
+      <Label alignment="CENTER_RIGHT" layoutX="450.0" layoutY="93.0" prefHeight="46.0" prefWidth="209.0" text="Artiste:">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Button layoutX="103.0" layoutY="157.0" mnemonicParsing="false" onAction="#switchToResultforTitleAndArtist" prefHeight="46.0" prefWidth="176.0" text="Rechercher par titre et nom" />
-      <Button layoutX="400.0" layoutY="157.0" mnemonicParsing="false" onAction="#getListByLyrics" prefHeight="46.0" prefWidth="176.0" text="Rechercher par paroles" />
-      <TextField fx:id="textFieldLyrics" layoutX="384.0" layoutY="85.0" prefHeight="46.0" prefWidth="209.0" />
-      <Label alignment="CENTER_RIGHT" layoutX="303.0" layoutY="31.0" prefHeight="46.0" prefWidth="209.0" text="Paroles:">
+      <Button layoutX="672.0" layoutY="154.0" mnemonicParsing="false" onAction="#switchToResultforTitleAndArtist" prefHeight="46.0" prefWidth="176.0" text="Rechercher par titre et nom" />
+      <Button layoutX="234.0" layoutY="154.0" mnemonicParsing="false" onAction="#getListByLyrics" prefHeight="46.0" prefWidth="176.0" text="Rechercher par paroles" />
+      <TextField fx:id="textFieldLyrics" layoutX="217.0" layoutY="85.0" prefHeight="46.0" prefWidth="209.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="142.0" layoutY="33.0" prefHeight="46.0" prefWidth="209.0" text="Paroles:">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Separator layoutX="313.0" orientation="VERTICAL" prefHeight="232.0" prefWidth="64.0" />
       <Separator layoutX="1.0" layoutY="220.0" prefHeight="25.0" prefWidth="900.0" />
-      <ListView fx:id="songList" fixedCellSize="50.0" layoutX="65.0" layoutY="249.0" prefHeight="320.0" prefWidth="561.0" />
-      <Button layoutX="718.0" layoutY="330.0" mnemonicParsing="false" onAction="#switchToResult" prefHeight="79.0" prefWidth="102.0" text="Montrer" />
+      <ListView fx:id="songList" fixedCellSize="50.0" layoutX="39.0" layoutY="260.0" prefHeight="258.0" prefWidth="559.0" />
+      <Button layoutX="626.0" layoutY="336.0" mnemonicParsing="false" onAction="#switchToResult" prefHeight="79.0" prefWidth="176.0" text="Montrer les paroles" />
+      <Separator layoutX="562.0" orientation="VERTICAL" prefHeight="232.0" prefWidth="64.0" />
+      <Label fx:id="showResults" layoutX="40.0" layoutY="530.0" prefHeight="46.0" prefWidth="242.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

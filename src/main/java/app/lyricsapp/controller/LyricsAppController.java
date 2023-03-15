@@ -48,10 +48,16 @@ public class LyricsAppController implements Initializable {
 
     private String[] songs;
 
+    @FXML
+    private Label showResults;
+
     private int songIndex;
 
     @FXML
     private ListView<String> songList;
+
+    @FXML
+    private ListView<String> favoriteList;
 
     Data data = Data.getNewData();
 
@@ -162,6 +168,7 @@ public class LyricsAppController implements Initializable {
     private void getListByLyrics() throws IOException {
         String lyrics = textFieldLyrics.getText();
         songByLyrics(lyrics);
+        showResults.setText(String.valueOf(Parse.getSongs().length) + " resultats");
         songList.getItems().addAll(Parse.getSongs());
         songList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
@@ -181,4 +188,6 @@ public class LyricsAppController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+
 }
