@@ -7,12 +7,12 @@
 
 <AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.lyricsapp.controller.LyricsAppController">
    <children>
-      <Button layoutX="196.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchToRechercher" prefHeight="141.0" prefWidth="191.0" text="Rechercher une chanson" textAlignment="JUSTIFY">
+      <Button layoutX="177.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchToRechercher" prefHeight="141.0" prefWidth="210.0" text="Rechercher une chanson" textAlignment="JUSTIFY">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="532.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchToFavoris" prefHeight="141.0" prefWidth="191.0" text="Acceder aux favoris">
+      <Button layoutX="510.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchToFavoris" prefHeight="141.0" prefWidth="210.0" text="Favoris">
          <font>
             <Font size="18.0" />
          </font>
