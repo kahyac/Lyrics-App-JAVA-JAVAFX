@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.lyricsapp.view.LyricsAppController">
+   <children>
+      <Button mnemonicParsing="false" text="Button" />
+      <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="73.0" text="&lt;----" />
+      <Button layoutY="55.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="73.0" text="&lt;3" />
+      <Button layoutX="820.0" layoutY="12.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="73.0" text="Ajouter au favoris" />
+      <Label layoutX="297.0" layoutY="28.0" prefHeight="48.0" prefWidth="349.0" text="Title" />
+      <Label layoutX="297.0" layoutY="83.0" prefHeight="24.0" prefWidth="349.0" text="Artist" />
+      <Label layoutX="210.0" layoutY="202.0" prefHeight="287.0" prefWidth="519.0" text="Lyrics" />
+   </children>
+</AnchorPane>
