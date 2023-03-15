@@ -103,6 +103,20 @@ public class LyricsAppController implements Initializable {
         stage.show();
     }
 
+    @FXML
+    protected void switchToResultforTitleAndArtist(ActionEvent event) throws IOException {
+
+        String artistName = textField2.getText();
+        String titleName = textField1.getText();
+        data.setSongArtist(artistName);
+        data.setSongTitle(titleName);
+        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/resultLyrics.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow() ;
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
 
     @FXML
@@ -159,7 +173,6 @@ public class LyricsAppController implements Initializable {
                 data.setSongArtist(artistName);
                 data.setSongTitle(titleName);
                 lyricsByArtistAndTitle(artistName, titleName);
-                lyricsByArtistAndTitle.setText(getLyric());
             }
         });
     }

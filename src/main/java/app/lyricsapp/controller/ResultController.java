@@ -1,18 +1,36 @@
 package app.lyricsapp.controller;
 
 import app.lyricsapp.Data;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import static app.lyricsapp.model.Parse.getLyric;
 import static app.lyricsapp.model.Search.lyricsByArtistAndTitle;
 
 public class ResultController implements Initializable {
+
+    private Stage stage;
+
+    private Scene scene;
+
+    private Parent root;
+
+    @FXML
+    private AnchorPane scenePane;
 
     Data data = Data.getNewData();
 
@@ -25,10 +43,34 @@ public class ResultController implements Initializable {
     @FXML
     private TextArea lyricsByArtistAndTitle;
 
+    public static String capitalizeString(String string) {
+        char[] chars = string.toLowerCase().toCharArray();
+        boolean found = false;
+        for (int i = 0; i < chars.length; i++) {
+            if (!found && Character.isLetter(chars[i])) {
+                chars[i] = Character.toUpperCase(chars[i]);
+                found = true;
+            } else if (Character.isWhitespace(chars[i]) || chars[i]=='.' || chars[i]=='\'') { // You can add other chars here
+                found = false;
+            }
+        }
+        return String.valueOf(chars);
+    }
+
     public void initialize(URL location, ResourceBundle resourceBundle) {
-        titleLabel.setText(data.getSongTitle());
-        artistLabel.setText(data.getSongArtist());
+        titleLabel.setText(capitalizeString(data.getSongTitle()));
+        artistLabel.setText(capitalizeString(data.getSongArtist()));
         lyricsByArtistAndTitle(data.getSongArtist(), data.getSongTitle());
         lyricsByArtistAndTitle.setText(getLyric());
+    }
+
+    @FXML
+    protected void switchToRechercher(ActionEvent event) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/rechercher.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
