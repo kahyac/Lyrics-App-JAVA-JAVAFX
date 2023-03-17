@@ -1,7 +1,19 @@
 package app.lyricsapp.controller;
 
 import app.lyricsapp.Data;
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import app.lyricsapp.model.FavoriteManager;
 import app.lyricsapp.model.Parse;
+import app.lyricsapp.model.Song;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -18,12 +30,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import static app.lyricsapp.model.Parse.*;
 import static app.lyricsapp.model.Search.*;
 
 public class LyricsAppController implements Initializable {
+
 
     private Stage stage;
 
@@ -55,9 +70,13 @@ public class LyricsAppController implements Initializable {
 
     @FXML
     private ListView<String> songList;
+    @FXML
+    private ListView<String> testview;
 
     @FXML
     private ListView<String> favoriteList;
+
+    private FavoriteManager playList = new FavoriteManager();
 
     Data data = Data.getNewData();
 
@@ -181,6 +200,31 @@ public class LyricsAppController implements Initializable {
                 lyricsByArtistAndTitle(artistName, titleName);
             }
         });
+    }
+    @FXML
+    private void addToFavoritePlaylist(ActionEvent event) throws  IOException{
+        String artist = textField2.getText();
+        String title = textField1.getText();
+        songByArtistAndTitle(artist,title);
+        Song song = new Song(artist,title,getLyric());
+        playList.addFavorite(song);
+    }
+    @FXML
+    private void showPlaylist(ActionEvent event){
+        testview.refresh();
+        for(Song song:playList.getFavoriteSongs()){
+            if (!testview.getItems().contains(song.getSong())){
+                testview.getItems().add(song.getSong());
+            }
+        }
+    }
+    @FXML
+    private void removeFromPlaylist(ActionEvent event) throws IOException{
+        for (Song song:playList.getFavoriteSongs()){
+            if(song.getSong()==textField1.getText()){
+                playList.removeFavorite(song);
+            }
+        }
     }
 
     @Override

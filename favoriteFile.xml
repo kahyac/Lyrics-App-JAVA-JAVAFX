@@ -1,2 +1,14 @@
 <Favorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
+	<Artist></Artist>
+	<Song>sunny</Song>
+</SongFavorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
+	<Artist></Artist>
+	<Song>baba</Song>
+</SongFavorite>
 </Favorite>

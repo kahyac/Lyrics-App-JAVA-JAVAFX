@@ -31,7 +31,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Button layoutX="672.0" layoutY="154.0" mnemonicParsing="false" onAction="#switchToResultforTitleAndArtist" prefHeight="46.0" prefWidth="176.0" text="Rechercher par titre et nom" />
+      <Button layoutX="617.0" layoutY="154.0" mnemonicParsing="false" onAction="#switchToResultforTitleAndArtist" prefHeight="46.0" prefWidth="94.0" text="Rechercher par titre et nom" />
       <Button layoutX="234.0" layoutY="154.0" mnemonicParsing="false" onAction="#getListByLyrics" prefHeight="46.0" prefWidth="176.0" text="Rechercher par paroles" />
       <TextField fx:id="textFieldLyrics" layoutX="217.0" layoutY="85.0" prefHeight="46.0" prefWidth="209.0" />
       <Label alignment="CENTER_RIGHT" layoutX="142.0" layoutY="33.0" prefHeight="46.0" prefWidth="209.0" text="Paroles:">
@@ -48,5 +48,9 @@
             <Font size="17.0" />
          </font>
       </Label>
+      <Button layoutX="775.0" layoutY="165.0" mnemonicParsing="false" onAction="#addToFavoritePlaylist" text="ajouter favorie" />
+      <Button layoutX="610.0" layoutY="263.0" mnemonicParsing="false" onAction="#showPlaylist" prefHeight="25.0" prefWidth="191.0" text="Afficher la playlist de favoris" />
+      <Button layoutX="713.0" layoutY="203.0" mnemonicParsing="false" onAction="#removeFromPlaylist" prefHeight="25.0" prefWidth="158.0" text="Supprimer de la playlist" />
+      <ListView fx:id="testview" layoutX="420.0" layoutY="379.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

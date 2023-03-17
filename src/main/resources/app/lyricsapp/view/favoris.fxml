@@ -22,6 +22,6 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <ListView fx:id="favoriteList" fixedCellSize="50.0" layoutX="174.0" layoutY="193.0" prefHeight="274.0" prefWidth="541.0" />
+      <ListView fx:id="favoritList" layoutX="299.0" layoutY="217.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
