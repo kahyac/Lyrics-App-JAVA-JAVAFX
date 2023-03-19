@@ -79,7 +79,10 @@ public class LyricsAppController implements Initializable {
     private ListView<String> songList;
     @FXML
     private ListView<String> testview;
-
+    @FXML
+    private MenuItem deleteMenuItem;
+    @FXML
+    private MenuItem showLyricsMenuItem;
     @FXML
     private ListView<String> favoriteList;
 
@@ -162,7 +165,7 @@ public class LyricsAppController implements Initializable {
         lyricsByArtistAndTitle.setText(getLyric());
         //lyricsByArtistAndTitle.setText(lyricsByArtistAndTitle(artist, title));
         //Song song = new Song(artist,title,lyricsByArtistAndTitle(artist, title));
-       // lyricsByArtistAndTitle.setText(song.getLyrics());
+        // lyricsByArtistAndTitle.setText(song.getLyrics());
 
 /*
             try {
@@ -209,27 +212,56 @@ public class LyricsAppController implements Initializable {
         });
     }
     @FXML
-    private void addToFavoritePlaylist(ActionEvent event) throws  IOException{
+    private void addToFavoritePlaylist(ActionEvent event) throws IOException{
         String artist = textField2.getText();
         String title = textField1.getText();
         songByArtistAndTitle(artist,title);
+        lyricsByArtistAndTitle(getArtists()[0], getSongs()[0]);
         Song song = new Song(Parse.getArtist(),Parse.getSong(),Parse.getLyric());
-        playList.addFavorite(song);
-        for(Song songSong:playList.getFavoriteSongs()) {
-            if (!testview.getItems().contains(songSong.getSong())) {
-                testview.getItems().add(song.getSong());
-            }
+        testview.setOnContextMenuRequested(rightClickEvent -> {
+
+            ContextMenu contextMenu = new ContextMenu();
+
+            contextMenu.getItems().add(deleteMenuItem);
+            contextMenu.getItems().add(showLyricsMenuItem);
+
+            deleteMenuItem.setOnAction(deleteEvent -> {
+                try {
+                    playList.removeFavorite(song);
+                    String selectedItem = testview.getSelectionModel().getSelectedItem();
+                    testview.getItems().remove(selectedItem);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            });
+
+            showLyricsMenuItem.setOnAction(deleteEvent -> {
+                System.out.println("hello");
+
+            });
+
+            contextMenu.show(testview, rightClickEvent.getScreenX(), rightClickEvent.getScreenY());
+        });
+
+        if(!playList.songIsInFavoriteSongs(song)) {
+            playList.addFavorite(song);
+            //for(Song songSong:playList.getFavoriteSongs()) {}
+            //if (!testview.getItems().contains(songSong.getSong())) {}
+            testview.getItems().add(song.getSong() + " - " + song.getArtist());
         }
     }
 
     @FXML
     private void removeFromPlaylist(ActionEvent event) throws IOException{
-        String artist = textField2Test.getText();
-        String title = textField1Test.getText();
-        lyricsByArtistAndTitle(artist,title);
-        Song ourSong = new Song(Parse.getArtist(),Parse.getSong(),Parse.getLyric());
-        if (playList.songIsInFavoriteSongs(ourSong)) {
-            playList.removeFavorite(ourSong);
+        String artist = textField2.getText();
+        String title = textField1.getText();
+
+        Song song = new Song(artist, title);
+        //if (playList.songIsInFavoriteSongs(ourSong)) {}
+        playList.removeFavorite(song);
+        if (!testview.getItems().contains(song.getSong())) {
+            testview.getItems().remove(song.getSong() + " - " + song.getArtist());
         }
         testview.refresh();
     }

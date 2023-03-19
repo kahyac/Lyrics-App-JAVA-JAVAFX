@@ -20,6 +20,11 @@ public class Song {
         this.lyrics = lyrics;
     }
 
+    public Song(String artist, String song) {
+        this.artist = artist;
+        this.song = song;
+    }
+
     public String getLyrics() {
         return lyrics;
     }

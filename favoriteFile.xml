@@ -2,7 +2,13 @@
 <SongFavorite>
 	<LyricsCheckSum>null</LyricsCheckSum>
 	<LyricsId>null</LyricsId>
-	<Artist>null</Artist>
-	<Song>null</Song>
+	<Artist>Michael Jackson</Artist>
+	<Song>Bad</Song>
+</SongFavorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
+	<Artist>Michael Jackson</Artist>
+	<Song>Thriller</Song>
 </SongFavorite>
 </Favorite>
