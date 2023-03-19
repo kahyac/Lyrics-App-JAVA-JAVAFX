@@ -8,7 +8,7 @@ import java.util.*;
 
 public class FavoriteManager {
     private final List<Song> favoriteSongs;
-    private final File favoriteFile = new File("favoriteFile.xml");
+    private final File favoriteFile = new File("C:\\Users\\ilybo\\IdeaProjects\\lyricsapp_final\\favoriteFile.xml");
 
     public FavoriteManager() {
         favoriteSongs = ReadXMLFile.readFile(favoriteFile);
@@ -61,7 +61,8 @@ public class FavoriteManager {
     }
 
     public static void main(String [] args) throws IOException {
-        File file = new File("query1.xml");
+        //File file = new File("query1.xml");
+        File file = new File("favoriteFile.xml");
         List<Song> songs = ReadXMLFile.readFile(file);
 
         FavoriteManager favoriteManager = new FavoriteManager();

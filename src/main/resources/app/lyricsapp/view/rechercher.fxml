@@ -50,9 +50,8 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Button layoutX="775.0" layoutY="165.0" mnemonicParsing="false" onAction="#addToFavoritePlaylist" text="ajouter favorie" />
+      <Button layoutX="775.0" layoutY="165.0" mnemonicParsing="false" onAction="#addToFavoritePlaylist" text="ajouter favoris" />
       <Button layoutX="610.0" layoutY="263.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="191.0" text="Afficher la playlist de favoris" />
-      <Button layoutX="713.0" layoutY="203.0" mnemonicParsing="false" onAction="#removeFromPlaylist" prefHeight="25.0" prefWidth="158.0" text="Supprimer de la playlist" />
       <ListView fx:id="testview" layoutX="420.0" layoutY="379.0" prefHeight="200.0" prefWidth="200.0">
          <contextMenu>
             <ContextMenu>
@@ -63,7 +62,5 @@
             </ContextMenu>
          </contextMenu>
       </ListView>
-      <TextField fx:id="textField2Test" layoutX="426.0" layoutY="205.0" prefHeight="46.0" prefWidth="209.0" promptText="exemple: The Kinks" />
-      <TextField fx:id="textField1Test" layoutX="426.0" layoutY="142.0" prefHeight="46.0" prefWidth="209.0" promptText="exemple: Sunny Afternoon" />
    </children>
 </AnchorPane>

@@ -4,10 +4,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +22,21 @@ public class ReadXMLFile {
 
         try {
 
+            String XML = "<Favorite>\n" +
+                    "  <SongFavorite>\n" +
+                    "    <LyricsCheckSum>null</LyricsCheckSum>\n" +
+                    "    <LyricsId>null</LyricsId>\n" +
+                    "    <Artist>Michael Jackson</Artist>\n" +
+                    "    <Song>Bad</Song>\n" +
+                    "  </SongFavorite>\n" +
+                    "</Favorite>";
+
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
 
-            // optional, but recommended
+            //Document doc = dBuilder.parse(new ByteArrayInputStream(XML.getBytes()));
+
             // read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
             doc.getDocumentElement().normalize();
 
@@ -64,7 +77,7 @@ public class ReadXMLFile {
 
 
         } catch (Exception e) {
-            System.out.println("Erreur");
+            e.printStackTrace();
         }
 
         return songs;

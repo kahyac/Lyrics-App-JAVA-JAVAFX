@@ -151,6 +151,13 @@ public class LyricsAppController implements Initializable {
         stage.show();
     }
 
+    @FXML
+    protected void dataSetter(String artist, String title) throws IOException {
+
+        data.setSongArtist(artist);
+        data.setSongTitle(title);
+    }
+
 
 
     @FXML
@@ -236,8 +243,19 @@ public class LyricsAppController implements Initializable {
 
             });
 
-            showLyricsMenuItem.setOnAction(deleteEvent -> {
-                System.out.println("hello");
+            showLyricsMenuItem.setOnAction(showEvent -> {
+                try {
+                    String selectedItem = testview.getSelectionModel().getSelectedItem();
+                    String[] artistAndTitle = selectedItem.split(" - ");
+                    dataSetter(artistAndTitle[1], artistAndTitle[0]);
+                    root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/resultLyrics.fxml"));
+                    stage = (Stage)((Node)event.getSource()).getScene().getWindow() ;
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
             });
 
