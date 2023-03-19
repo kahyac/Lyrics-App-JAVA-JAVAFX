@@ -17,11 +17,11 @@
             <Font size="76.0" />
          </font>
       </Label>
-      <Button layoutX="683.0" layoutY="488.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="35.0" prefWidth="203.0" text="Retour au menu principal">
+      <Button layoutX="683.0" layoutY="488.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="35.0" prefWidth="203.0" text="Menu principal">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <ListView fx:id="favoriteList" fixedCellSize="50.0" layoutX="174.0" layoutY="193.0" prefHeight="274.0" prefWidth="541.0" />
+      <ListView fx:id="favoritList" layoutX="299.0" layoutY="217.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

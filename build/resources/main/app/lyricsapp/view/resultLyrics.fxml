@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -23,6 +24,12 @@
       <Separator layoutX="1.0" layoutY="220.0" prefHeight="25.0" prefWidth="900.0" />
       <TextArea fx:id="lyricsByArtistAndTitle" editable="false" layoutX="152.0" layoutY="255.0" prefHeight="304.0" prefWidth="598.0" />
       <Button layoutX="14.0" layoutY="261.0" mnemonicParsing="false" onAction="#switchToRechercher" prefHeight="25.0" prefWidth="102.0" text="Retour" />
-      <CheckBox fx:id="addToFavorites" layoutX="743.0" layoutY="102.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="131.0" text="Favorites" />
+      <CheckBox fx:id="addToFavorites" layoutX="743.0" layoutY="102.0" mnemonicParsing="false"  prefHeight="46.0" prefWidth="131.0" text="Favorites" />
+      <TextField fx:id="favoriteSongName" layoutX="552.0" layoutY="112.0" />
+      <Label layoutX="555.0" layoutY="90.0" prefHeight="17.0" prefWidth="79.0" text="Titre :" textAlignment="RIGHT">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

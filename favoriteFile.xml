@@ -2,13 +2,7 @@
 <SongFavorite>
 	<LyricsCheckSum>null</LyricsCheckSum>
 	<LyricsId>null</LyricsId>
-	<Artist></Artist>
-	<Song>sunny</Song>
-</SongFavorite>
-<SongFavorite>
-	<LyricsCheckSum>null</LyricsCheckSum>
-	<LyricsId>null</LyricsId>
-	<Artist></Artist>
-	<Song>baba</Song>
+	<Artist>null</Artist>
+	<Song>null</Song>
 </SongFavorite>
 </Favorite>

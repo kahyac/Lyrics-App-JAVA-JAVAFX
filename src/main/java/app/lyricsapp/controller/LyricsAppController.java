@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static app.lyricsapp.model.FavoriteChoice.getFavorites;
 import static app.lyricsapp.model.Parse.*;
 import static app.lyricsapp.model.Search.*;
 
@@ -57,6 +58,12 @@ public class LyricsAppController implements Initializable {
 
     @FXML
     private TextField textField2;
+
+    @FXML
+    private TextField textField1Test;
+
+    @FXML
+    private TextField textField2Test;
 
     @FXML
     private TextArea lyricsByArtistAndTitle;
@@ -206,25 +213,25 @@ public class LyricsAppController implements Initializable {
         String artist = textField2.getText();
         String title = textField1.getText();
         songByArtistAndTitle(artist,title);
-        Song song = new Song(artist,title,getLyric());
+        Song song = new Song(Parse.getArtist(),Parse.getSong(),Parse.getLyric());
         playList.addFavorite(song);
-    }
-    @FXML
-    private void showPlaylist(ActionEvent event){
-        testview.refresh();
-        for(Song song:playList.getFavoriteSongs()){
-            if (!testview.getItems().contains(song.getSong())){
+        for(Song songSong:playList.getFavoriteSongs()) {
+            if (!testview.getItems().contains(songSong.getSong())) {
                 testview.getItems().add(song.getSong());
             }
         }
     }
+
     @FXML
     private void removeFromPlaylist(ActionEvent event) throws IOException{
-        for (Song song:playList.getFavoriteSongs()){
-            if(song.getSong()==textField1.getText()){
-                playList.removeFavorite(song);
-            }
+        String artist = textField2Test.getText();
+        String title = textField1Test.getText();
+        lyricsByArtistAndTitle(artist,title);
+        Song ourSong = new Song(Parse.getArtist(),Parse.getSong(),Parse.getLyric());
+        if (playList.songIsInFavoriteSongs(ourSong)) {
+            playList.removeFavorite(ourSong);
         }
+        testview.refresh();
     }
 
     @Override

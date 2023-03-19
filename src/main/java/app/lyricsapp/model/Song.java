@@ -27,6 +27,9 @@ public class Song {
         return song;
     }
 
+    public String getArtist() {
+        return artist;
+    }
     public String toString() {
         return "{Artiste => \"" + artist + "\", Chanson => \"" + song + "\"}";
         /*return "Song : {" + "lyricsCheckSum='" + lyricsCheckSum + '\'' + ", lyricsId='" + lyricsId + '\'' +
