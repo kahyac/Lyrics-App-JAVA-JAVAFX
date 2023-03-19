@@ -8,10 +8,11 @@ import java.util.*;
 
 public class FavoriteManager {
     private final List<Song> favoriteSongs;
-    private final File favoriteFile = new File("C:\\Users\\ilybo\\IdeaProjects\\lyricsapp_final\\favoriteFile.xml");
+    private final File favoriteFile = new File("favoriteFile.xml");
 
     public FavoriteManager() {
         favoriteSongs = ReadXMLFile.readFile(favoriteFile);
+        System.out.println(favoriteSongs);
     }
 
     public void writeFavoriteFile() throws IOException {
@@ -45,6 +46,16 @@ public class FavoriteManager {
 
     public List<Song> getFavoriteSongs() {
         return favoriteSongs;
+    }
+
+    public List<String> getFavoriteSongsForView() {
+
+        List<String> listSong = new ArrayList<>();
+        for (Song favoriteSong : favoriteSongs) {
+            listSong.add(favoriteSong.getSong()+" - " +favoriteSong.getArtist());
+
+        }
+        return listSong;
     }
 
     public int favoriteSongSize() {

@@ -8,7 +8,13 @@
 <SongFavorite>
 	<LyricsCheckSum>null</LyricsCheckSum>
 	<LyricsId>null</LyricsId>
-	<Artist>Michael Jackson</Artist>
-	<Song>Thriller</Song>
+	<Artist>Metallica</Artist>
+	<Song>For Whom the Bell Tolls</Song>
+</SongFavorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
+	<Artist>The Kinks</Artist>
+	<Song>Sunny Afternoon</Song>
 </SongFavorite>
 </Favorite>

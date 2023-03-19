@@ -22,15 +22,6 @@ public class ReadXMLFile {
 
         try {
 
-            String XML = "<Favorite>\n" +
-                    "  <SongFavorite>\n" +
-                    "    <LyricsCheckSum>null</LyricsCheckSum>\n" +
-                    "    <LyricsId>null</LyricsId>\n" +
-                    "    <Artist>Michael Jackson</Artist>\n" +
-                    "    <Song>Bad</Song>\n" +
-                    "  </SongFavorite>\n" +
-                    "</Favorite>";
-
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
@@ -41,7 +32,7 @@ public class ReadXMLFile {
             doc.getDocumentElement().normalize();
 
             System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-            NodeList nList = doc.getElementsByTagName("SearchLyricResult");
+            NodeList nList = doc.getElementsByTagName("SongFavorite");
             System.out.println("----------------------------");
 
             for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -50,14 +41,11 @@ public class ReadXMLFile {
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
 
-                    String trackId = eElement.getElementsByTagName("TrackId").item(0).getTextContent();
-                    String lyricsCheckSum = eElement.getElementsByTagName("LyricChecksum").item(0).getTextContent();
-                    String lyricsId = eElement.getElementsByTagName("LyricId").item(0).getTextContent();
-                    String SongUrl = eElement.getElementsByTagName("SongUrl").item(0).getTextContent();
-                    String ArtistUrl = eElement.getElementsByTagName("ArtistUrl").item(0).getTextContent();
+
+                    String lyricsCheckSum = eElement.getElementsByTagName("LyricsCheckSum").item(0).getTextContent();
+                    String lyricsId = eElement.getElementsByTagName("LyricsId").item(0).getTextContent();
                     String Artist = eElement.getElementsByTagName("Artist").item(0).getTextContent();
                     String Song = eElement.getElementsByTagName("Song").item(0).getTextContent();
-                    String SongRank = eElement.getElementsByTagName("SongRank").item(0).getTextContent();
                     Song song = new Song(lyricsCheckSum,lyricsId,Artist,Song);
                     songs.add(song);
 

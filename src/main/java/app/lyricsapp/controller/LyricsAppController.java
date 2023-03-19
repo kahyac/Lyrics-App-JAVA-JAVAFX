@@ -86,7 +86,11 @@ public class LyricsAppController implements Initializable {
     @FXML
     private ListView<String> favoriteList;
 
-    private FavoriteManager playList = new FavoriteManager();
+    private static FavoriteManager playList = new FavoriteManager();
+
+    public static FavoriteManager getPlayList(){
+        return playList;
+    }
 
     Data data = Data.getNewData();
 

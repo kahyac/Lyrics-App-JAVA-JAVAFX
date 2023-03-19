@@ -1,7 +1,9 @@
 package app.lyricsapp.controller;
 
+import app.lyricsapp.Data;
 import app.lyricsapp.model.FavoriteManager;
 import app.lyricsapp.model.Parse;
+import app.lyricsapp.model.Song;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -33,6 +33,9 @@ public class FavoritesController implements Initializable {
     private AnchorPane scenePane;
 
     @FXML
+    private ListView<String> favoriteList;
+
+    @FXML
     private CheckBox addToFavorites;
     @FXML
     private TextField favoriteSongName;
@@ -44,6 +47,13 @@ public class FavoritesController implements Initializable {
 
     @FXML
     private TextField textField2;
+
+    @FXML
+    private MenuItem deleteMenuItem;
+    @FXML
+    private MenuItem showLyricsMenuItem;
+
+    Data data = Data.getNewData();
 
     @FXML
     protected void switchToMain(ActionEvent event) throws IOException {
@@ -65,5 +75,48 @@ public class FavoritesController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        favoriteList.setOnContextMenuRequested(rightClickEvent -> {
+
+            ContextMenu contextMenu = new ContextMenu();
+
+            contextMenu.getItems().add(deleteMenuItem);
+            contextMenu.getItems().add(showLyricsMenuItem);
+
+            deleteMenuItem.setOnAction(deleteEvent -> {
+                try {
+                    String selectedItem = favoriteList.getSelectionModel().getSelectedItem();
+                    String[] songAndArtist = selectedItem.split(" - ");
+                    Song song = new Song(songAndArtist[1],songAndArtist[0]);
+                    LyricsAppController.getPlayList().removeFavorite(song);
+                    favoriteList.getItems().remove(selectedItem);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            });
+
+            showLyricsMenuItem.setOnAction(showEvent -> {
+                try {
+                    String selectedItem = favoriteList.getSelectionModel().getSelectedItem();
+                    String[] artistAndTitle = selectedItem.split(" - ");
+                    data.setSongArtist(artistAndTitle[1]);
+                    data.setSongTitle(artistAndTitle[0]);
+                    root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/resultLyrics.fxml"));
+                    stage = (Stage)showLyricsMenuItem.getParentPopup().getOwnerWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            });
+
+            contextMenu.show(favoriteList, rightClickEvent.getScreenX(), rightClickEvent.getScreenY());
+        });
+        favoriteList.getItems().addAll(LyricsAppController.getPlayList().getFavoriteSongsForView());
+
     }
+
+
 }
