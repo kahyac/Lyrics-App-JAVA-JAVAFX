@@ -10,16 +10,16 @@
 
 <AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.lyricsapp.controller.FavoritesController">
    <children>
-      <Button fx:id="exitButton" layoutX="683.0" layoutY="551.0" mnemonicParsing="false" onAction="#quitingAction" prefHeight="35.0" prefWidth="203.0" text="Quitter">
+      <Button fx:id="exitButton" layoutX="683.0" layoutY="551.0" mnemonicParsing="false" onAction="#quitingAction" prefHeight="35.0" prefWidth="203.0" text="%quitterMain.text">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="55.0" layoutY="51.0" prefHeight="126.0" prefWidth="790.0" text="Favorites" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="55.0" layoutY="51.0" prefHeight="126.0" prefWidth="790.0" text="%favorisMain.text" textAlignment="CENTER">
          <font>
             <Font size="76.0" />
          </font>
       </Label>
-      <Button layoutX="683.0" layoutY="488.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="35.0" prefWidth="203.0" text="Menu principal">
+      <Button layoutX="683.0" layoutY="488.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="35.0" prefWidth="203.0" text="%mainMenuButton.text">
          <font>
             <Font size="15.0" />
          </font>
@@ -34,7 +34,7 @@
             </ContextMenu>
          </contextMenu>
       </ListView>
-      <Button layoutX="683.0" layoutY="313.0" mnemonicParsing="false" onAction="#switchToFavoriteArtist" prefHeight="35.0" prefWidth="203.0" text="Artistes Favoris">
+      <Button layoutX="683.0" layoutY="313.0" mnemonicParsing="false" onAction="#switchToFavoriteArtist" prefHeight="35.0" prefWidth="203.0" text="%artistesfavorites.text">
          <font>
             <Font size="15.0" />
          </font>

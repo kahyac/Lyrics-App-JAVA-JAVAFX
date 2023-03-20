@@ -1,5 +1,6 @@
 package app.lyricsapp.controller;
 
+import app.lyricsapp.Language;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,13 +33,13 @@ public class ChoiceSearchController implements Initializable {
     @FXML
     protected void switchToLyrics(ActionEvent event) throws IOException {
 
-        /*ResourceBundle bundle = ResourceBundle.getBundle("en");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/lyricsapp.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle(Language.getLanguageSelection());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/lyrics.fxml"));
         loader.setResources(bundle);
         Parent root = loader.load();
 
-         */
-        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/lyrics.fxml"));
+
+        //root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/lyrics.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -49,13 +50,13 @@ public class ChoiceSearchController implements Initializable {
     @FXML
     protected void switchToTitreAndArtist(ActionEvent event) throws IOException {
 
-        /*ResourceBundle bundle = ResourceBundle.getBundle("en");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/lyricsapp.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle(Language.getLanguageSelection());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/titreAndArtist.fxml"));
         loader.setResources(bundle);
         Parent root = loader.load();
 
-         */
-        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/titreAndArtist.fxml"));
+
+        //root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/titreAndArtist.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -65,7 +66,7 @@ public class ChoiceSearchController implements Initializable {
 
     @FXML
     protected void switchToMain(ActionEvent event) throws IOException {
-        ResourceBundle bundle = ResourceBundle.getBundle("en");
+        ResourceBundle bundle = ResourceBundle.getBundle(Language.getLanguageSelection());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/lyricsapp.fxml"));
         loader.setResources(bundle);
         Parent root = loader.load();

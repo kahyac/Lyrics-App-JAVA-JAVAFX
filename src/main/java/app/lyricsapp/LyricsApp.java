@@ -20,7 +20,7 @@ public class LyricsApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         //Locale locale = new Locale("en"); // par exemple, pour charger la langue française
-        ResourceBundle bundle = ResourceBundle.getBundle("en");
+        ResourceBundle bundle = ResourceBundle.getBundle(Language.getLanguageSelection());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/lyricsapp.fxml"));
         loader.setResources(bundle);
         Parent root = loader.load();

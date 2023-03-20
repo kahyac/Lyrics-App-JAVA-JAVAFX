@@ -1,6 +1,7 @@
 package app.lyricsapp.controller;
 
 import app.lyricsapp.Data;
+import app.lyricsapp.Language;
 import app.lyricsapp.model.FavoriteManager;
 import app.lyricsapp.model.Parse;
 import app.lyricsapp.model.Song;
@@ -65,12 +66,16 @@ public class TitreAndArtistController implements Initializable {
 
     @FXML
     protected void switchToResultforTitleAndArtist(ActionEvent event) throws IOException {
+        ResourceBundle bundle = ResourceBundle.getBundle(Language.getLanguageSelection());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/resultLyrıcs.fxml"));
+        loader.setResources(bundle);
+        Parent root = loader.load();
 
         String artistName = textField2.getText();
         String titleName = textField1.getText();
         data.setSongArtist(artistName);
         data.setSongTitle(titleName);
-        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/resultLyrics.fxml"));
+        //root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/resultLyrics.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow() ;
         scene = new Scene(root);
         stage.setScene(scene);
@@ -79,8 +84,12 @@ public class TitreAndArtistController implements Initializable {
 
     @FXML
     protected void switchToChoiceSearch(ActionEvent event) throws IOException {
+        ResourceBundle bundle = ResourceBundle.getBundle(Language.getLanguageSelection());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/choıceSearch.fxml"));
+        loader.setResources(bundle);
+        Parent root = loader.load();
 
-        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/choiceSearch.fxml"));
+        //root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/choiceSearch.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

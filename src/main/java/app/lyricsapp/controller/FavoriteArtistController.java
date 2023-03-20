@@ -1,5 +1,6 @@
 package app.lyricsapp.controller;
 
+import app.lyricsapp.Language;
 import app.lyricsapp.model.Song;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,9 +30,12 @@ public class FavoriteArtistController implements Initializable {
 
     @FXML
     protected void switchToFavoris(ActionEvent event) throws IOException {
+        ResourceBundle bundle = ResourceBundle.getBundle(Language.getLanguageSelection());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/favorıs.fxml"));
+        loader.setResources(bundle);
+        Parent root = loader.load();
 
-
-        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/favoris.fxml"));
+        //root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/favoris.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

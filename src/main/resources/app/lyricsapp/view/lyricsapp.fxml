@@ -7,17 +7,17 @@
 
 <AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.lyricsapp.controller.LyricsAppController">
    <children>
-      <Button layoutX="177.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchToChoiceSearch" prefHeight="141.0" prefWidth="210.0" text="Rechercher une chanson" textAlignment="JUSTIFY">
+      <Button layoutX="98.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchToChoiceSearch" prefHeight="141.0" prefWidth="286.0" text="%rechercherMain.text" textAlignment="JUSTIFY">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="510.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchToFavoris" prefHeight="141.0" prefWidth="210.0" text="Favoris">
+      <Button layoutX="510.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchToFavoris" prefHeight="141.0" prefWidth="286.0" text="%favorisMain.text">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="exitButton" layoutX="683.0" layoutY="551.0" mnemonicParsing="false" onAction="#quitingAction" prefHeight="35.0" prefWidth="203.0" text="Quitter">
+      <Button fx:id="exitButton" layoutX="683.0" layoutY="551.0" mnemonicParsing="false" onAction="#quitingAction" prefHeight="35.0" prefWidth="203.0" text="%quitterMain.text">
          <font>
             <Font size="15.0" />
          </font></Button>
@@ -26,6 +26,6 @@
             <Font size="76.0" />
          </font>
       </Label>
-      <Button fx:id="saveButton" layoutX="56.0" layoutY="43.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" text="%saveButton.text" />
+      <Button fx:id="saveButton" layoutX="56.0" layoutY="43.0" mnemonicParsing="false" onAction="#switchToMainLanguage" prefHeight="25.0" prefWidth="168.0" text="%saveButton.text" />
    </children>
 </AnchorPane>
