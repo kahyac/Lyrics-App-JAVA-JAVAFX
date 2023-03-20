@@ -7,8 +7,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.ContextMenu?>
-<?import javafx.scene.control.MenuItem?>
 
 <AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.lyricsapp.controller.LyricsAppController">
    <children>
@@ -52,15 +50,5 @@
       </Label>
       <Button layoutX="775.0" layoutY="165.0" mnemonicParsing="false" onAction="#addToFavoritePlaylist" text="ajouter favoris" />
       <Button layoutX="610.0" layoutY="263.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="191.0" text="Afficher la playlist de favoris" />
-      <ListView fx:id="testview" layoutX="420.0" layoutY="379.0" prefHeight="200.0" prefWidth="200.0">
-         <!--<contextMenu>
-            <ContextMenu>
-               <items>
-                  <MenuItem fx:id="deleteMenuItem" text="Supprimer" />
-                  <MenuItem fx:id="showLyricsMenuItem" text="Afficher les paroles" />
-               </items>
-            </ContextMenu>
-         </contextMenu>-->
-      </ListView>
    </children>
 </AnchorPane>

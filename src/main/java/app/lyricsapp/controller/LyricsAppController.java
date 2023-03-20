@@ -86,6 +86,9 @@ public class LyricsAppController implements Initializable {
     @FXML
     private ListView<String> favoriteList;
 
+    @FXML
+    private Button saveButton;
+
     private static FavoriteManager playList = new FavoriteManager();
 
     public static FavoriteManager getPlayList(){
@@ -106,8 +109,11 @@ public class LyricsAppController implements Initializable {
 
     @FXML
     protected void switchToMain(ActionEvent event) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/lyricsapp.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("en");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/lyricsapp.fxml"));
+        loader.setResources(bundle);
+        Parent root = loader.load();
+        //root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/lyricsapp.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -124,7 +130,11 @@ public class LyricsAppController implements Initializable {
     @FXML
     protected void switchToFavoris(ActionEvent event) throws IOException {
 
-        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/favoris.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("en");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/favoris.fxml"));
+        loader.setResources(bundle);
+        Parent root = loader.load();
+        //root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/favoris.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

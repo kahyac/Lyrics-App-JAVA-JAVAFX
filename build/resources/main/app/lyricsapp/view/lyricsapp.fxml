@@ -26,5 +26,6 @@
             <Font size="76.0" />
          </font>
       </Label>
+      <Button fx:id="saveButton" layoutX="56.0" layoutY="43.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" text="%saveButton.text" />
    </children>
 </AnchorPane>
