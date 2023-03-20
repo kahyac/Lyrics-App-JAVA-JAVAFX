@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -37,6 +38,12 @@ public class TitreAndArtistController implements Initializable {
     private Scene scene;
 
     private Parent root;
+
+    @FXML
+    private MenuItem deleteMenuItem;
+
+    @FXML
+    private MenuItem showLyricsMenuItem;
 
     private static FavoriteManager playList = LyricsAppController.getPlayList();
 

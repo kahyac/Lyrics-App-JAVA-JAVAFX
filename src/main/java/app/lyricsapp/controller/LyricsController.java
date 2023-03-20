@@ -49,6 +49,9 @@ public class LyricsController implements Initializable {
     @FXML
     private MenuItem showLyricsMenuItem;
 
+    @FXML
+    private MenuItem addMenuItem;
+
     private static FavoriteManager playList = LyricsAppController.getPlayList();
 
     Data data = Data.getNewData();
@@ -99,5 +102,44 @@ public class LyricsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        songList.setOnContextMenuRequested(rightClickEvent -> {
+
+            ContextMenu contextMenu = new ContextMenu();
+
+            contextMenu.getItems().add(deleteMenuItem);
+            contextMenu.getItems().add(addMenuItem);
+            contextMenu.getItems().add(showLyricsMenuItem);
+
+            deleteMenuItem.setOnAction(deleteEvent -> {
+                try {
+                    String selectedItem = songList.getSelectionModel().getSelectedItem();
+                    String[] songAndArtist = selectedItem.split(" - ");
+                    Song song = new Song(songAndArtist[1],songAndArtist[0]);
+                    LyricsAppController.getPlayList().removeFavorite(song);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            });
+
+            showLyricsMenuItem.setOnAction(showEvent -> {
+                try {
+                    String selectedItem = songList.getSelectionModel().getSelectedItem();
+                    String[] artistAndTitle = selectedItem.split(" - ");
+                    data.setSongArtist(artistAndTitle[1]);
+                    data.setSongTitle(artistAndTitle[0]);
+                    root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/resultLyrics.fxml"));
+                    stage = (Stage)showLyricsMenuItem.getParentPopup().getOwnerWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            });
+
+            contextMenu.show(songList, rightClickEvent.getScreenX(), rightClickEvent.getScreenY());
+        });
     }
 }
