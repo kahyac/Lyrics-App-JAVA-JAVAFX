@@ -31,7 +31,7 @@ public class FavoriteArtistController implements Initializable {
     @FXML
     protected void switchToFavoris(ActionEvent event) throws IOException {
         ResourceBundle bundle = ResourceBundle.getBundle(Language.getLanguageSelection());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/favorıs.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/favoris.fxml"));
         loader.setResources(bundle);
         Parent root = loader.load();
 

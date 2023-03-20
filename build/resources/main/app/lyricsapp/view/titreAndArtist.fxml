@@ -6,23 +6,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.lyricsapp.controller.TitreAndArtistController">
    <children>
-      <Label alignment="CENTER_RIGHT" layoutX="176.0" layoutY="146.0" prefHeight="46.0" prefWidth="209.0" text="Titre:">
+      <Label alignment="CENTER_RIGHT" layoutX="176.0" layoutY="146.0" prefHeight="46.0" prefWidth="209.0" text="%title.text">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="176.0" layoutY="229.0" prefHeight="46.0" prefWidth="209.0" text="Artiste:">
+      <Label alignment="CENTER_RIGHT" layoutX="176.0" layoutY="229.0" prefHeight="46.0" prefWidth="209.0" text="%artiste.text">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
       <TextField fx:id="textField1" layoutX="405.0" layoutY="146.0" prefHeight="46.0" prefWidth="209.0" promptText="exemple: Sunny Afternoon" />
       <TextField fx:id="textField2" layoutX="405.0" layoutY="229.0" prefHeight="46.0" prefWidth="209.0" promptText="exemple: The Kinks" />
-      <Button layoutX="692.0" layoutY="198.0" mnemonicParsing="false" onAction="#addToFavoritePlaylist" text="ajouter favoris" />
-      <Button layoutX="357.0" layoutY="359.0" mnemonicParsing="false" onAction="#switchToResultforTitleAndArtist" prefHeight="46.0" prefWidth="257.0" text="Rechercher par titre et nom" />
+      <Button layoutX="692.0" layoutY="198.0" mnemonicParsing="false" onAction="#addToFavoritePlaylist" text="%addTo.text" />
+      <Button layoutX="357.0" layoutY="359.0" mnemonicParsing="false" onAction="#switchToResultforTitleAndArtist" prefHeight="46.0" prefWidth="257.0" text="%recherche.text" />
       <Button layoutX="44.0" layoutY="46.0" mnemonicParsing="false" onAction="#switchToChoiceSearch" prefHeight="14.0" prefWidth="49.0" text="&lt;-">
          <font>
             <Font size="15.0" />

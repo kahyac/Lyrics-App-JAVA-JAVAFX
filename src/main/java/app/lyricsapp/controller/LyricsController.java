@@ -80,7 +80,7 @@ public class LyricsController implements Initializable {
     @FXML
     protected void switchToResult(ActionEvent event) throws IOException {
         ResourceBundle bundle = ResourceBundle.getBundle(Language.getLanguageSelection());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/resultLyrıcs.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/resultLyrics.fxml"));
         loader.setResources(bundle);
         Parent root = loader.load();
 

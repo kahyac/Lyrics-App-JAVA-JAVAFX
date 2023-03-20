@@ -13,12 +13,12 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.lyricsapp.controller.LyricsController">
    <children>
       <TextField fx:id="textFieldLyrics" layoutX="347.0" layoutY="127.0" prefHeight="46.0" prefWidth="209.0" />
-      <Label alignment="CENTER" layoutX="284.0" layoutY="27.0" prefHeight="100.0" prefWidth="333.0" text="Paroles:">
+      <Label alignment="CENTER" layoutX="284.0" layoutY="27.0" prefHeight="100.0" prefWidth="333.0" text="%lyrics2.text">
          <font>
             <Font size="42.0" />
          </font>
       </Label>
-      <Button layoutX="364.0" layoutY="203.0" mnemonicParsing="false" onAction="#getListByLyrics" prefHeight="46.0" prefWidth="176.0" text="Rechercher par paroles" />
+      <Button layoutX="364.0" layoutY="203.0" mnemonicParsing="false" onAction="#getListByLyrics" prefHeight="46.0" prefWidth="176.0" text="%searchBy.text" />
       <Separator layoutX="1.0" layoutY="257.0" prefHeight="25.0" prefWidth="900.0" />
       <ListView fx:id="songList" fixedCellSize="50.0" layoutX="68.0" layoutY="289.0" prefHeight="258.0" prefWidth="559.0">
          <contextMenu>
@@ -35,7 +35,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Button layoutX="690.0" layoutY="379.0" mnemonicParsing="false" onAction="#switchToResult" prefHeight="79.0" prefWidth="145.0" text="Montrer les paroles" />
+      <Button layoutX="690.0" layoutY="379.0" mnemonicParsing="false" onAction="#switchToResult" prefHeight="79.0" prefWidth="145.0" text="%montrer.text" />
       <Button layoutX="44.0" layoutY="46.0" mnemonicParsing="false" onAction="#switchToChoiceSearch" prefHeight="14.0" prefWidth="49.0" text="&lt;-">
          <font>
             <Font size="15.0" />

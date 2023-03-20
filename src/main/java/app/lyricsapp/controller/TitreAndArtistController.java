@@ -66,16 +66,17 @@ public class TitreAndArtistController implements Initializable {
 
     @FXML
     protected void switchToResultforTitleAndArtist(ActionEvent event) throws IOException {
-        ResourceBundle bundle = ResourceBundle.getBundle(Language.getLanguageSelection());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/resultLyrıcs.fxml"));
-        loader.setResources(bundle);
-        Parent root = loader.load();
+        ;
 
         String artistName = textField2.getText();
         String titleName = textField1.getText();
         data.setSongArtist(artistName);
         data.setSongTitle(titleName);
         //root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/resultLyrics.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle(Language.getLanguageSelection());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/resultLyrics.fxml"));
+        loader.setResources(bundle);
+        Parent root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow() ;
         scene = new Scene(root);
         stage.setScene(scene);
