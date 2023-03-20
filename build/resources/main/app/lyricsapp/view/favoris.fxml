@@ -19,7 +19,7 @@
             <Font size="76.0" />
          </font>
       </Label>
-      <Button layoutX="683.0" layoutY="488.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="35.0" prefWidth="203.0" text="%mainMenuButton.text">
+      <Button layoutX="683.0" layoutY="488.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="35.0" prefWidth="203.0" text="Menu principal">
          <font>
             <Font size="15.0" />
          </font>
@@ -34,6 +34,10 @@
             </ContextMenu>
          </contextMenu>
       </ListView>
-      <ListView layoutX="55.0" layoutY="235.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="683.0" layoutY="313.0" mnemonicParsing="false" onAction="#switchToFavoriteArtist" prefHeight="35.0" prefWidth="203.0" text="Artistes Favoris">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

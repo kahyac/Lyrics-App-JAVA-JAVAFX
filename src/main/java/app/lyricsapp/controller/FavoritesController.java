@@ -1,8 +1,6 @@
 package app.lyricsapp.controller;
 
 import app.lyricsapp.Data;
-import app.lyricsapp.model.FavoriteManager;
-import app.lyricsapp.model.Parse;
 import app.lyricsapp.model.Song;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -75,6 +73,18 @@ public class FavoritesController implements Initializable {
     protected void quitingAction(ActionEvent event) throws IOException{
         stage = (Stage) this.scenePane.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    protected void switchToFavoriteArtist(ActionEvent event) throws IOException {
+
+
+        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/favoriteArtist.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 
 

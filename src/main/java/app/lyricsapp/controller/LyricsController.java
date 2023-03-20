@@ -123,7 +123,6 @@ public class LyricsController implements Initializable {
                     });
                     Song song = new Song(data.getSongArtist(), data.getSongTitle());
                     LyricsAppController.getPlayList().removeFavorite(song);
-                    songList.getItems().remove(selectedItem);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -146,7 +145,9 @@ public class LyricsController implements Initializable {
                         }
                     });
                     Song song = new Song(data.getSongArtist(), data.getSongTitle());
-                    LyricsAppController.getPlayList().addFavorite(song);
+                    if(!playList.songIsInFavoriteSongs(song)){
+                        LyricsAppController.getPlayList().addFavorite(song);
+                    }
                     //songList.getItems().remove(selectedItem);
                 } catch (IOException e) {
                     throw new RuntimeException(e);

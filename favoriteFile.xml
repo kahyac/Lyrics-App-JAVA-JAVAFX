@@ -8,19 +8,43 @@
 <SongFavorite>
 	<LyricsCheckSum>null</LyricsCheckSum>
 	<LyricsId>null</LyricsId>
+	<Artist>Michael Jackson</Artist>
+	<Song>Beat It</Song>
+</SongFavorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
+	<Artist>ABBA</Artist>
+	<Song>Money, Money, Money</Song>
+</SongFavorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
+	<Artist>The Kinks</Artist>
+	<Song>Sunny Afternoon</Song>
+</SongFavorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
+	<Artist>Bobby Darin</Artist>
+	<Song>Mack the Knife</Song>
+</SongFavorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
+	<Artist>Metallica</Artist>
+	<Song>Whiplash</Song>
+</SongFavorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
 	<Artist>Metallica</Artist>
 	<Song>For Whom the Bell Tolls</Song>
 </SongFavorite>
 <SongFavorite>
 	<LyricsCheckSum>null</LyricsCheckSum>
 	<LyricsId>null</LyricsId>
-	<Artist>Nirvana</Artist>
-	<Song>Smells Like Teen Spirit</Song>
-</SongFavorite>
-<SongFavorite>
-	<LyricsCheckSum>null</LyricsCheckSum>
-	<LyricsId>null</LyricsId>
-	<Artist>Clannad</Artist>
-	<Song>Theme From Harry's Game</Song>
+	<Artist>Michael Jackson</Artist>
+	<Song>Thriller</Song>
 </SongFavorite>
 </Favorite>
