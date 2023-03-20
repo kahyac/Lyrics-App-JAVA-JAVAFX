@@ -94,7 +94,7 @@ public class LyricsController implements Initializable {
     @FXML
     protected void switchToChoiceSearch(ActionEvent event) throws IOException {
         ResourceBundle bundle = ResourceBundle.getBundle(Language.getLanguageSelection());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/choıceSearch.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/lyricsapp/view/choiceSearch.fxml"));
         loader.setResources(bundle);
         Parent root = loader.load();
 
