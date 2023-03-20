@@ -1,2 +1,14 @@
 <Favorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
+	<Artist>Michael Jackson</Artist>
+	<Song>Bad</Song>
+</SongFavorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
+	<Artist>Metallica</Artist>
+	<Song>For Whom the Bell Tolls</Song>
+</SongFavorite>
 </Favorite>

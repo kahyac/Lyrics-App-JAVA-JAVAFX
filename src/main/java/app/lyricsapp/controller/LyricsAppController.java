@@ -95,12 +95,14 @@ public class LyricsAppController implements Initializable {
         return playList;
     }
 
+
+
     Data data = Data.getNewData();
 
     @FXML
-    protected void switchToRechercher(ActionEvent event) throws IOException {
+    protected void switchToChoiceSearch(ActionEvent event) throws IOException {
 
-        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/rechercher.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/choiceSearch.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

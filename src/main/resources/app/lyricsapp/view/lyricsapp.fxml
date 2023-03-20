@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.lyricsapp.controller.LyricsAppController">
    <children>
-      <Button layoutX="177.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchToRechercher" prefHeight="141.0" prefWidth="210.0" text="Rechercher une chanson" textAlignment="JUSTIFY">
+      <Button layoutX="177.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchToChoiceSearch" prefHeight="141.0" prefWidth="210.0" text="Rechercher une chanson" textAlignment="JUSTIFY">
          <font>
             <Font size="15.0" />
          </font>
