@@ -97,9 +97,6 @@ public class LyricsController implements Initializable {
     }
 
 
-
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         songList.setOnContextMenuRequested(rightClickEvent -> {
@@ -108,31 +105,49 @@ public class LyricsController implements Initializable {
 
             contextMenu.getItems().add(deleteMenuItem);
             contextMenu.getItems().add(addMenuItem);
-            contextMenu.getItems().add(showLyricsMenuItem);
 
             deleteMenuItem.setOnAction(deleteEvent -> {
                 try {
                     String selectedItem = songList.getSelectionModel().getSelectedItem();
-                    String[] songAndArtist = selectedItem.split(" - ");
-                    Song song = new Song(songAndArtist[1],songAndArtist[0]);
+                    songList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+                        @Override
+                        public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
+                            songIndex= songList.getSelectionModel().getSelectedIndex();
+                            String titleName = getSongs()[songIndex];
+                            String artistName = getArtists()[songIndex];
+                            data.setSongArtist(artistName);
+                            data.setSongTitle(titleName);
+                            lyricsByArtistAndTitle(artistName, titleName);
+                        }
+                    });
+                    Song song = new Song(data.getSongArtist(), data.getSongTitle());
                     LyricsAppController.getPlayList().removeFavorite(song);
+                    songList.getItems().remove(selectedItem);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
 
             });
 
-            showLyricsMenuItem.setOnAction(showEvent -> {
+            addMenuItem.setOnAction(addEvent -> {
                 try {
                     String selectedItem = songList.getSelectionModel().getSelectedItem();
-                    String[] artistAndTitle = selectedItem.split(" - ");
-                    data.setSongArtist(artistAndTitle[1]);
-                    data.setSongTitle(artistAndTitle[0]);
-                    root = FXMLLoader.load(getClass().getResource("/app/lyricsapp/view/resultLyrics.fxml"));
-                    stage = (Stage)showLyricsMenuItem.getParentPopup().getOwnerWindow();
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
+                    songList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+                        @Override
+                        public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
+                            songIndex= songList.getSelectionModel().getSelectedIndex();
+                            String titleName = getSongs()[songIndex];
+                            String artistName = getArtists()[songIndex];
+                            data.setSongArtist(artistName);
+                            data.setSongTitle(titleName);
+                            lyricsByArtistAndTitle(artistName, titleName);
+                        }
+                    });
+                    Song song = new Song(data.getSongArtist(), data.getSongTitle());
+                    LyricsAppController.getPlayList().addFavorite(song);
+                    //songList.getItems().remove(selectedItem);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -141,5 +156,6 @@ public class LyricsController implements Initializable {
 
             contextMenu.show(songList, rightClickEvent.getScreenX(), rightClickEvent.getScreenY());
         });
+
     }
 }

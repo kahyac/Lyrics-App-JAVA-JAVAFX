@@ -11,4 +11,16 @@
 	<Artist>Metallica</Artist>
 	<Song>For Whom the Bell Tolls</Song>
 </SongFavorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
+	<Artist>Nirvana</Artist>
+	<Song>Smells Like Teen Spirit</Song>
+</SongFavorite>
+<SongFavorite>
+	<LyricsCheckSum>null</LyricsCheckSum>
+	<LyricsId>null</LyricsId>
+	<Artist>Clannad</Artist>
+	<Song>Theme From Harry's Game</Song>
+</SongFavorite>
 </Favorite>

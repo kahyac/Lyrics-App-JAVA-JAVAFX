@@ -24,8 +24,8 @@
          <contextMenu>
             <ContextMenu>
                <items>
-                  <MenuItem fx:id="deleteMenuItem" text="Supprimer" />
-                  <MenuItem fx:id="showLyricsMenuItem" text="Afficher les paroles" />
+                  <MenuItem fx:id="addMenuItem" text="Ajouter aux favoris" />
+                  <MenuItem fx:id="deleteMenuItem" text="Supprimer des favoris" />
                </items>
             </ContextMenu>
          </contextMenu>
